@@ -20,6 +20,7 @@ namespace MNM2
         fNhomSP nsp = new fNhomSP();
         fThanhToan tt = new fThanhToan();
         fKhachHang kh = new fKhachHang();
+        fDoiMK dmk = new fDoiMK();  
         fThongKeDoanhThu tkdt = new fThongKeDoanhThu();
 
         public Form1()
@@ -177,6 +178,11 @@ namespace MNM2
         private void btnTKDT_Click(object sender, EventArgs e)
         {
             showControl(tkdt);
+        }
+
+        private void btnChangePass_Click(object sender, EventArgs e)
+        {
+            showControl(dmk);
         }
     }
 }

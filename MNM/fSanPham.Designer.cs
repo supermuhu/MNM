@@ -40,7 +40,22 @@
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvSanPham = new System.Windows.Forms.DataGridView();
+            this.id_linhkien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_thuonghieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenlinhkien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.baohanh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.khuyenmai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngaytao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngaycapnhat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.richMoTa = new System.Windows.Forms.TextBox();
+            this.nmrSoluong = new System.Windows.Forms.NumericUpDown();
+            this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -52,7 +67,6 @@
             this.btnChonHinh = new System.Windows.Forms.Button();
             this.nmrBaoHanh = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
-            this.richMoTa = new System.Windows.Forms.RichTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -73,21 +87,11 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
-            this.id_linhkien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenlinhkien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_thuonghieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.baohanh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.khuyenmai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ngaytao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ngaycapnhat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.openImage = new System.Windows.Forms.OpenFileDialog();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrSoluong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLinhKien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrBaoHanh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrKhuyenMai)).BeginInit();
@@ -179,10 +183,10 @@
             this.dgvSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSanPham.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_linhkien,
+            this.id_thuonghieu,
             this.tenlinhkien,
             this.id_loai,
             this.gia,
-            this.id_thuonghieu,
             this.baohanh,
             this.khuyenmai,
             this.hinh,
@@ -197,10 +201,105 @@
             this.dgvSanPham.RowHeadersWidth = 51;
             this.dgvSanPham.Size = new System.Drawing.Size(559, 449);
             this.dgvSanPham.TabIndex = 39;
-            this.dgvSanPham.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSanPham_CellContentClick);
+            this.dgvSanPham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSanPham_CellClick);
+            // 
+            // id_linhkien
+            // 
+            this.id_linhkien.DataPropertyName = "id_sanpham";
+            this.id_linhkien.HeaderText = "Mã linh kiện";
+            this.id_linhkien.Name = "id_linhkien";
+            this.id_linhkien.ReadOnly = true;
+            // 
+            // id_thuonghieu
+            // 
+            this.id_thuonghieu.DataPropertyName = "id_thuonghieu";
+            this.id_thuonghieu.HeaderText = "Mã thương hiệu";
+            this.id_thuonghieu.Name = "id_thuonghieu";
+            this.id_thuonghieu.ReadOnly = true;
+            this.id_thuonghieu.Width = 110;
+            // 
+            // tenlinhkien
+            // 
+            this.tenlinhkien.DataPropertyName = "tensanpham";
+            this.tenlinhkien.HeaderText = "Tên linh kiện";
+            this.tenlinhkien.Name = "tenlinhkien";
+            this.tenlinhkien.ReadOnly = true;
+            this.tenlinhkien.Width = 156;
+            // 
+            // id_loai
+            // 
+            this.id_loai.DataPropertyName = "id_loai";
+            this.id_loai.HeaderText = "Mã loại";
+            this.id_loai.Name = "id_loai";
+            this.id_loai.ReadOnly = true;
+            this.id_loai.Visible = false;
+            // 
+            // gia
+            // 
+            this.gia.DataPropertyName = "gia";
+            this.gia.HeaderText = "Giá";
+            this.gia.Name = "gia";
+            this.gia.ReadOnly = true;
+            // 
+            // baohanh
+            // 
+            this.baohanh.DataPropertyName = "baohanh";
+            this.baohanh.HeaderText = "Bảo hành";
+            this.baohanh.Name = "baohanh";
+            this.baohanh.ReadOnly = true;
+            this.baohanh.Width = 50;
+            // 
+            // khuyenmai
+            // 
+            this.khuyenmai.DataPropertyName = "khuyenmai";
+            this.khuyenmai.HeaderText = "Khuyến mại";
+            this.khuyenmai.Name = "khuyenmai";
+            this.khuyenmai.ReadOnly = true;
+            this.khuyenmai.Width = 50;
+            // 
+            // hinh
+            // 
+            this.hinh.DataPropertyName = "hinh";
+            this.hinh.HeaderText = "Hình";
+            this.hinh.Name = "hinh";
+            this.hinh.ReadOnly = true;
+            this.hinh.Visible = false;
+            // 
+            // mota
+            // 
+            this.mota.DataPropertyName = "mota";
+            this.mota.HeaderText = "Mô tả";
+            this.mota.Name = "mota";
+            this.mota.ReadOnly = true;
+            this.mota.Width = 70;
+            // 
+            // ngaytao
+            // 
+            this.ngaytao.DataPropertyName = "ngaytao";
+            this.ngaytao.HeaderText = "Ngày tạo";
+            this.ngaytao.Name = "ngaytao";
+            this.ngaytao.ReadOnly = true;
+            // 
+            // ngaycapnhat
+            // 
+            this.ngaycapnhat.DataPropertyName = "ngaycapnhat";
+            this.ngaycapnhat.HeaderText = "Ngày cập nhật";
+            this.ngaycapnhat.Name = "ngaycapnhat";
+            this.ngaycapnhat.ReadOnly = true;
+            // 
+            // soluong
+            // 
+            this.soluong.DataPropertyName = "soluong";
+            this.soluong.HeaderText = "Số lượng";
+            this.soluong.Name = "soluong";
+            this.soluong.ReadOnly = true;
+            this.soluong.Width = 50;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.richMoTa);
+            this.groupBox2.Controls.Add(this.nmrSoluong);
+            this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.label14);
@@ -212,7 +311,6 @@
             this.groupBox2.Controls.Add(this.btnChonHinh);
             this.groupBox2.Controls.Add(this.nmrBaoHanh);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.richMoTa);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label6);
@@ -233,6 +331,35 @@
             this.groupBox2.TabIndex = 69;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin linh kiện";
+            // 
+            // richMoTa
+            // 
+            this.richMoTa.Location = new System.Drawing.Point(102, 422);
+            this.richMoTa.Multiline = true;
+            this.richMoTa.Name = "richMoTa";
+            this.richMoTa.Size = new System.Drawing.Size(196, 87);
+            this.richMoTa.TabIndex = 71;
+            // 
+            // nmrSoluong
+            // 
+            this.nmrSoluong.Location = new System.Drawing.Point(245, 388);
+            this.nmrSoluong.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nmrSoluong.Name = "nmrSoluong";
+            this.nmrSoluong.Size = new System.Drawing.Size(47, 20);
+            this.nmrSoluong.TabIndex = 70;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(184, 392);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(49, 13);
+            this.label17.TabIndex = 69;
+            this.label17.Text = "Số lượng";
             // 
             // label16
             // 
@@ -324,6 +451,7 @@
             this.btnChonHinh.TabIndex = 60;
             this.btnChonHinh.Text = "Chọn hình";
             this.btnChonHinh.UseVisualStyleBackColor = true;
+            this.btnChonHinh.Click += new System.EventHandler(this.btnChonHinh_Click);
             // 
             // nmrBaoHanh
             // 
@@ -340,14 +468,6 @@
             this.label8.Size = new System.Drawing.Size(37, 13);
             this.label8.TabIndex = 58;
             this.label8.Text = "Mô tả:";
-            // 
-            // richMoTa
-            // 
-            this.richMoTa.Location = new System.Drawing.Point(98, 419);
-            this.richMoTa.Name = "richMoTa";
-            this.richMoTa.Size = new System.Drawing.Size(221, 95);
-            this.richMoTa.TabIndex = 57;
-            this.richMoTa.Text = "";
             // 
             // label7
             // 
@@ -406,7 +526,7 @@
             this.txtMaLinhKien.Location = new System.Drawing.Point(104, 235);
             this.txtMaLinhKien.Name = "txtMaLinhKien";
             this.txtMaLinhKien.ReadOnly = true;
-            this.txtMaLinhKien.Size = new System.Drawing.Size(98, 20);
+            this.txtMaLinhKien.Size = new System.Drawing.Size(194, 20);
             this.txtMaLinhKien.TabIndex = 36;
             // 
             // label5
@@ -431,6 +551,7 @@
             this.txtGia.Name = "txtGia";
             this.txtGia.Size = new System.Drawing.Size(99, 20);
             this.txtGia.TabIndex = 50;
+            this.txtGia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGia_KeyPress);
             // 
             // cboNhomLK
             // 
@@ -440,6 +561,7 @@
             this.cboNhomLK.Name = "cboNhomLK";
             this.cboNhomLK.Size = new System.Drawing.Size(196, 21);
             this.cboNhomLK.TabIndex = 46;
+            this.cboNhomLK.SelectedIndexChanged += new System.EventHandler(this.cboNhomLK_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -467,6 +589,7 @@
             this.cboLoaiLK.Name = "cboLoaiLK";
             this.cboLoaiLK.Size = new System.Drawing.Size(196, 21);
             this.cboLoaiLK.TabIndex = 48;
+            this.cboLoaiLK.SelectedIndexChanged += new System.EventHandler(this.cboLoaiLK_SelectedIndexChanged);
             // 
             // btnLamMoi
             // 
@@ -476,6 +599,7 @@
             this.btnLamMoi.TabIndex = 68;
             this.btnLamMoi.Text = "Làm mới";
             this.btnLamMoi.UseVisualStyleBackColor = true;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // label1
             // 
@@ -508,6 +632,7 @@
             this.btnThem.TabIndex = 7;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnXoa
             // 
@@ -517,6 +642,7 @@
             this.btnXoa.TabIndex = 9;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -526,88 +652,11 @@
             this.btnSua.TabIndex = 8;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
-            // id_linhkien
+            // openImage
             // 
-            this.id_linhkien.DataPropertyName = "id_sanpham";
-            this.id_linhkien.HeaderText = "Mã linh kiện";
-            this.id_linhkien.Name = "id_linhkien";
-            // 
-            // tenlinhkien
-            // 
-            this.tenlinhkien.DataPropertyName = "tensanpham";
-            this.tenlinhkien.HeaderText = "Tên linh kiện";
-            this.tenlinhkien.Name = "tenlinhkien";
-            this.tenlinhkien.Width = 156;
-            // 
-            // id_loai
-            // 
-            this.id_loai.DataPropertyName = "id_loai";
-            this.id_loai.HeaderText = "Mã loại";
-            this.id_loai.Name = "id_loai";
-            this.id_loai.Visible = false;
-            // 
-            // gia
-            // 
-            this.gia.DataPropertyName = "gia";
-            this.gia.HeaderText = "Giá";
-            this.gia.Name = "gia";
-            // 
-            // id_thuonghieu
-            // 
-            this.id_thuonghieu.DataPropertyName = "id_thuonghieu";
-            this.id_thuonghieu.HeaderText = "Mã thương hiệu";
-            this.id_thuonghieu.Name = "id_thuonghieu";
-            this.id_thuonghieu.Visible = false;
-            // 
-            // baohanh
-            // 
-            this.baohanh.DataPropertyName = "baohanh";
-            this.baohanh.HeaderText = "Bảo hành";
-            this.baohanh.Name = "baohanh";
-            this.baohanh.Width = 50;
-            // 
-            // khuyenmai
-            // 
-            this.khuyenmai.DataPropertyName = "khuyenmai";
-            this.khuyenmai.HeaderText = "Khuyến mại";
-            this.khuyenmai.Name = "khuyenmai";
-            this.khuyenmai.Width = 50;
-            // 
-            // hinh
-            // 
-            this.hinh.DataPropertyName = "hinh";
-            this.hinh.HeaderText = "Hình";
-            this.hinh.Name = "hinh";
-            this.hinh.Visible = false;
-            // 
-            // mota
-            // 
-            this.mota.DataPropertyName = "mota";
-            this.mota.HeaderText = "Mô tả";
-            this.mota.Name = "mota";
-            this.mota.Visible = false;
-            // 
-            // ngaytao
-            // 
-            this.ngaytao.DataPropertyName = "ngaytao";
-            this.ngaytao.HeaderText = "Ngày tạo";
-            this.ngaytao.Name = "ngaytao";
-            this.ngaytao.Visible = false;
-            // 
-            // ngaycapnhat
-            // 
-            this.ngaycapnhat.DataPropertyName = "ngaycapnhat";
-            this.ngaycapnhat.HeaderText = "Ngày cập nhật";
-            this.ngaycapnhat.Name = "ngaycapnhat";
-            this.ngaycapnhat.Visible = false;
-            // 
-            // soluong
-            // 
-            this.soluong.DataPropertyName = "soluong";
-            this.soluong.HeaderText = "Số lượng";
-            this.soluong.Name = "soluong";
-            this.soluong.Width = 50;
+            this.openImage.FileName = "openFileDialog3";
             // 
             // fSanPham
             // 
@@ -624,7 +673,7 @@
             this.Controls.Add(this.btnLamMoi);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fSanPham";
             this.Size = new System.Drawing.Size(1001, 680);
             this.Load += new System.EventHandler(this.fSanPham_Load);
@@ -632,6 +681,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrSoluong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLinhKien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrBaoHanh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrKhuyenMai)).EndInit();
@@ -666,7 +716,6 @@
         private System.Windows.Forms.Button btnChonHinh;
         private System.Windows.Forms.NumericUpDown nmrBaoHanh;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.RichTextBox richMoTa;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
@@ -688,10 +737,10 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_linhkien;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_thuonghieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenlinhkien;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_loai;
         private System.Windows.Forms.DataGridViewTextBoxColumn gia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_thuonghieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn baohanh;
         private System.Windows.Forms.DataGridViewTextBoxColumn khuyenmai;
         private System.Windows.Forms.DataGridViewTextBoxColumn hinh;
@@ -699,5 +748,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ngaytao;
         private System.Windows.Forms.DataGridViewTextBoxColumn ngaycapnhat;
         private System.Windows.Forms.DataGridViewTextBoxColumn soluong;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.NumericUpDown nmrSoluong;
+        private System.Windows.Forms.OpenFileDialog openImage;
+        private System.Windows.Forms.TextBox richMoTa;
     }
 }
