@@ -255,23 +255,8 @@ namespace MNM2
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            String query = "delete sanpham " +
-                "where id_sanpham = @sp ";
-            SqlParameter[] args =
-            {
-                new SqlParameter("@th", cboThuongHieu.SelectedValue),
-                new SqlParameter("@ten", txtTenLinhKien.Text),
-                new SqlParameter("@loai", cboLoaiLK.SelectedValue),
-                new SqlParameter("@gia", txtGia.Text),
-                new SqlParameter("@bh", nmrBaoHanh.Value),
-                new SqlParameter("@km", nmrKhuyenMai.Value),
-                new SqlParameter("@hinh", linkImage),
-                new SqlParameter("@mota", String.IsNullOrEmpty(richMoTa.Text) ? "Còn mới" : richMoTa.Text),
-                new SqlParameter("@capnhat", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")),
-                new SqlParameter("@sl", nmrSoluong.Value),
-                new SqlParameter("@sp", txtMaLinhKien.Text)
-            };
-            if (Data.Excute(query, args))
+            if (Data.Excute("delete chitietphieunhap where id_sanpham = @sp ", new SqlParameter("@sp", txtMaLinhKien.Text)) &&
+                Data.Excute("delete sanpham where id_sanpham = @sp ", new SqlParameter("@sp", txtMaLinhKien.Text)))
             {
                 emptyText();
                 dgvSanPham_Load();

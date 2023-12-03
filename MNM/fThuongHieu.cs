@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.SqlClient;
 namespace MNM2
 {
     public partial class fThuongHieu : UserControl
@@ -15,6 +15,11 @@ namespace MNM2
         public fThuongHieu()
         {
             InitializeComponent();
+        }
+
+        private void fThuongHieu_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

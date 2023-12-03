@@ -228,3 +228,17 @@ C:\Users\hmtua\OneDrive\Desktop\MNM\obj\Debug\MNM2.csproj.CopyComplete
 C:\Users\hmtua\OneDrive\Desktop\MNM\obj\Debug\MNM2.exe
 C:\Users\hmtua\OneDrive\Desktop\MNM\obj\Debug\MNM2.pdb
 C:\Users\hmtua\OneDrive\Desktop\MNM\obj\Debug\MNM2.fDoiMK.resources
+D:\Documents\MNM\MNM\MNM\bin\Debug\BCrypt.Net-Core.dll
+D:\Documents\MNM\MNM\MNM\bin\Debug\BCrypt.Net-Next.dll
+D:\Documents\MNM\MNM\MNM\bin\Debug\System.Buffers.dll
+D:\Documents\MNM\MNM\MNM\bin\Debug\System.Memory.dll
+D:\Documents\MNM\MNM\MNM\bin\Debug\System.Numerics.Vectors.dll
+D:\Documents\MNM\MNM\MNM\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Documents\MNM\MNM\MNM\bin\Debug\BCrypt.Net-Core.pdb
+D:\Documents\MNM\MNM\MNM\bin\Debug\BCrypt.Net-Next.xml
+D:\Documents\MNM\MNM\MNM\bin\Debug\System.Buffers.xml
+D:\Documents\MNM\MNM\MNM\bin\Debug\System.Memory.xml
+D:\Documents\MNM\MNM\MNM\bin\Debug\System.Numerics.Vectors.xml
+D:\Documents\MNM\MNM\MNM\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Documents\MNM\MNM\MNM\obj\Debug\MNM2.fDoiMK.resources
+D:\Documents\MNM\MNM\MNM\obj\Debug\MNM2.LoginForm.resources
