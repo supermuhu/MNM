@@ -29,8 +29,8 @@ namespace MNM2
         }
         private void cboLoaiLK_Load()
         {
-            if (cboNhomLK.DataSource == null) return;
             cboLoaiLK.DataSource = null;
+            if (cboNhomLK.Items.Count == 0) return;
             cboLoaiLK.ValueMember = "id_loai";
             cboLoaiLK.DisplayMember = "tenloai";
             cboLoaiLK.DataSource = Data.GetData("select * from loaisanpham where id_nhom = @id", 
@@ -38,10 +38,12 @@ namespace MNM2
         }
         private void cboThuongHieu_Load()
         {
-            //cboThuongHieu.DataSource = null;
+            cboThuongHieu.DataSource = null;
+            if (cboNhomLK.Items.Count == 0) return;
             cboThuongHieu.ValueMember = "id_thuonghieu";
             cboThuongHieu.DisplayMember = "tenthuonghieu";
-            cboThuongHieu.DataSource = Data.GetData("select * from thuonghieu");
+            cboThuongHieu.DataSource = Data.GetData("select * from thuonghieu where id_nhom = @id",
+                new SqlParameter("@id", cboNhomLK.SelectedValue));
         }
         private void dgvSanPham_Load()
         {
@@ -66,33 +68,33 @@ namespace MNM2
 
         private void dgvSanPham_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvSanPham.SelectedCells[0].Value == null) return;
+            //if (dgvSanPham.SelectedCells[0].Value == null) return;
             int index = dgvSanPham.SelectedCells[0].RowIndex;
             //pictureLinhKien.BackgroundImage = Image.FromFile(Directory.GetCurrentDirectory() + @"\image\" + dgvSanPham.Rows[index].Cells[7].Value);
             string imagePath = dgvSanPham.Rows[index].Cells[7].Value.ToString();
             linkImage = dgvSanPham.Rows[index].Cells[7].Value.ToString();
-            if (!string.IsNullOrWhiteSpace(imagePath))
-            {
-                // Đảm bảo đường dẫn hình ảnh không rỗng hoặc null trước khi cố gắng mở nó
-                string fullPath = Path.Combine(Directory.GetCurrentDirectory(), "image", imagePath);
+            //if (!string.IsNullOrWhiteSpace(imagePath))
+            //{
+            //    // Đảm bảo đường dẫn hình ảnh không rỗng hoặc null trước khi cố gắng mở nó
+            //    string fullPath = Path.Combine(Directory.GetCurrentDirectory(), "image", imagePath);
 
-                if (File.Exists(fullPath))
-                {
-                    // Mở hình ảnh nếu tệp tồn tại
-                    pictureLinhKien.BackgroundImage = Image.FromFile(fullPath);
-                }
-                else
-                {
-                    // Xử lý khi tệp không tồn tại
-                    MessageBox.Show("Tệp hình ảnh không tồn tại.");
-                }
-            }
-            else
-            {
-                // Xử lý khi đường dẫn hình ảnh là rỗng
-                MessageBox.Show("Rỗng");
-                return;
-            }
+            //    if (File.Exists(fullPath))
+            //    {
+            //        // Mở hình ảnh nếu tệp tồn tại
+            //        pictureLinhKien.BackgroundImage = Image.FromFile(fullPath);
+            //    }
+            //    else
+            //    {
+            //        // Xử lý khi tệp không tồn tại
+            //        MessageBox.Show("Tệp hình ảnh không tồn tại.");
+            //    }
+            //}
+            //else
+            //{
+            //    // Xử lý khi đường dẫn hình ảnh là rỗng
+            //    MessageBox.Show("Rỗng");
+            //    return;
+            //}
             txtMaLinhKien.Text = dgvSanPham.Rows[index].Cells[0].Value.ToString();
             txtTenLinhKien.Text = dgvSanPham.Rows[index].Cells[2].Value.ToString();
             txtGia.Text = dgvSanPham.Rows[index].Cells[4].Value.ToString();
@@ -141,6 +143,11 @@ namespace MNM2
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
+            if(cboNhomLK.Items.Count == 0)
+            {
+                MessageBox.Show("Chưa có nhóm linh kiện");
+                return;
+            }
             if (cboLoaiLK.Items.Count == 0)
             {
                 MessageBox.Show("Chưa có loại linh kiện");
@@ -166,6 +173,12 @@ namespace MNM2
             if (pictureLinhKien.BackgroundImage == null)
             {
                 btnChonHinh_Click(sender, e);
+            }
+            if (txtMaLinhKien.Text == Data.Scalar("select * from sanpham where id_sanpham = @id",
+                new SqlParameter("@id", txtMaLinhKien.Text)))
+            {
+                MessageBox.Show("Trùng mã linh kiện");
+                return;
             }
             String query = "insert into sanpham values (@sp, @th, @ten, @loai, @gia, @baohanh, @khuyenmai, " +
                 "@hinh, @mota, @ngaytao, @ngaycapnhat, @sl)";
@@ -220,6 +233,37 @@ namespace MNM2
 
         private void btnSua_Click(object sender, EventArgs e)
         {
+            if (cboNhomLK.Items.Count == 0)
+            {
+                MessageBox.Show("Chưa có nhóm linh kiện");
+                return;
+            }
+            if (cboLoaiLK.Items.Count == 0)
+            {
+                MessageBox.Show("Chưa có loại linh kiện");
+                return;
+            }
+            if (String.IsNullOrEmpty(txtTenLinhKien.Text))
+            {
+                MessageBox.Show("Chưa có tên linh kiện");
+                txtTenLinhKien.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(txtGia.Text))
+            {
+                MessageBox.Show("Chưa có giá linh kiện");
+                txtGia.Focus();
+                return;
+            }
+            if (cboThuongHieu.Items.Count == 0)
+            {
+                MessageBox.Show("Chưa có thương hiệu");
+                return;
+            }
+            if (pictureLinhKien.BackgroundImage == null)
+            {
+                btnChonHinh_Click(sender, e);
+            }
             String query = "update sanpham " +
                 "set id_thuonghieu = @th," +
                 "tensanpham = @ten," +

@@ -40,6 +40,11 @@
             this.aaa = new System.Windows.Forms.Label();
             this.txtNgayTao = new System.Windows.Forms.TextBox();
             this.dgvThuongHieu = new System.Windows.Forms.DataGridView();
+            this.id_thuonghieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_nhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenthuonghieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngaytao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngaycapnhat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
@@ -98,6 +103,7 @@
             this.cboNhomLK.Name = "cboNhomLK";
             this.cboNhomLK.Size = new System.Drawing.Size(173, 21);
             this.cboNhomLK.TabIndex = 35;
+            this.cboNhomLK.SelectedIndexChanged += new System.EventHandler(this.cboNhomLK_SelectedIndexChanged);
             // 
             // b
             // 
@@ -159,12 +165,54 @@
             // 
             // dgvThuongHieu
             // 
+            this.dgvThuongHieu.AllowUserToAddRows = false;
             this.dgvThuongHieu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvThuongHieu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id_thuonghieu,
+            this.id_nhom,
+            this.tenthuonghieu,
+            this.ngaytao,
+            this.ngaycapnhat});
             this.dgvThuongHieu.Location = new System.Drawing.Point(11, 19);
             this.dgvThuongHieu.Name = "dgvThuongHieu";
+            this.dgvThuongHieu.RowHeadersVisible = false;
             this.dgvThuongHieu.RowHeadersWidth = 51;
             this.dgvThuongHieu.Size = new System.Drawing.Size(523, 393);
             this.dgvThuongHieu.TabIndex = 36;
+            this.dgvThuongHieu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvThuongHieu_CellClick);
+            // 
+            // id_thuonghieu
+            // 
+            this.id_thuonghieu.DataPropertyName = "id_thuonghieu";
+            this.id_thuonghieu.HeaderText = "Mã thương hiệu";
+            this.id_thuonghieu.Name = "id_thuonghieu";
+            this.id_thuonghieu.Width = 110;
+            // 
+            // id_nhom
+            // 
+            this.id_nhom.DataPropertyName = "id_nhom";
+            this.id_nhom.HeaderText = "Mã nhóm linh kiện";
+            this.id_nhom.Name = "id_nhom";
+            this.id_nhom.Width = 120;
+            // 
+            // tenthuonghieu
+            // 
+            this.tenthuonghieu.DataPropertyName = "tenthuonghieu";
+            this.tenthuonghieu.HeaderText = "Tên thương hiệu";
+            this.tenthuonghieu.Name = "tenthuonghieu";
+            this.tenthuonghieu.Width = 110;
+            // 
+            // ngaytao
+            // 
+            this.ngaytao.DataPropertyName = "ngaytao";
+            this.ngaytao.HeaderText = "Ngày tạo";
+            this.ngaytao.Name = "ngaytao";
+            // 
+            // ngaycapnhat
+            // 
+            this.ngaycapnhat.DataPropertyName = "ngaycapnhat";
+            this.ngaycapnhat.HeaderText = "Ngày cập nhật";
+            this.ngaycapnhat.Name = "ngaycapnhat";
             // 
             // btnThem
             // 
@@ -174,6 +222,7 @@
             this.btnThem.TabIndex = 7;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnXoa
             // 
@@ -183,6 +232,7 @@
             this.btnXoa.TabIndex = 9;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -192,6 +242,7 @@
             this.btnSua.TabIndex = 8;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // groupBox1
             // 
@@ -224,6 +275,7 @@
             this.btnLamMoi.TabIndex = 41;
             this.btnLamMoi.Text = "Làm mới";
             this.btnLamMoi.UseVisualStyleBackColor = true;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // label2
             // 
@@ -244,7 +296,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnLamMoi);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fThuongHieu";
             this.Size = new System.Drawing.Size(882, 628);
             this.Load += new System.EventHandler(this.fThuongHieu_Load);
@@ -279,5 +331,10 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnLamMoi;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_thuonghieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_nhom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tenthuonghieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ngaytao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ngaycapnhat;
     }
 }

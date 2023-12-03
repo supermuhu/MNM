@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtXuatkho_Thanhtien = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbox_Xuatkho_Thanhtoan = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cboMaLK = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -48,11 +53,6 @@
             this.btnXuatKho = new System.Windows.Forms.Button();
             this.btnLamMoi = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cbox_Xuatkho_Thanhtoan = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtXuatkho_Thanhtien = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrSoLuong)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -86,6 +86,53 @@
             this.groupBox2.TabIndex = 55;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin phiếu xuất";
+            // 
+            // txtXuatkho_Thanhtien
+            // 
+            this.txtXuatkho_Thanhtien.Location = new System.Drawing.Point(125, 309);
+            this.txtXuatkho_Thanhtien.Name = "txtXuatkho_Thanhtien";
+            this.txtXuatkho_Thanhtien.ReadOnly = true;
+            this.txtXuatkho_Thanhtien.Size = new System.Drawing.Size(173, 20);
+            this.txtXuatkho_Thanhtien.TabIndex = 54;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(44, 312);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(58, 13);
+            this.label9.TabIndex = 53;
+            this.label9.Text = "Thành tiền";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(34, 216);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(12, 16);
+            this.label7.TabIndex = 50;
+            this.label7.Text = "*";
+            // 
+            // cbox_Xuatkho_Thanhtoan
+            // 
+            this.cbox_Xuatkho_Thanhtoan.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbox_Xuatkho_Thanhtoan.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbox_Xuatkho_Thanhtoan.FormattingEnabled = true;
+            this.cbox_Xuatkho_Thanhtoan.Location = new System.Drawing.Point(125, 216);
+            this.cbox_Xuatkho_Thanhtoan.Name = "cbox_Xuatkho_Thanhtoan";
+            this.cbox_Xuatkho_Thanhtoan.Size = new System.Drawing.Size(173, 21);
+            this.cbox_Xuatkho_Thanhtoan.TabIndex = 52;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(47, 219);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(68, 13);
+            this.label8.TabIndex = 51;
+            this.label8.Text = "Phương thức";
             // 
             // label1
             // 
@@ -220,9 +267,11 @@
             // 
             // dgvPhieuXuat
             // 
+            this.dgvPhieuXuat.AllowUserToAddRows = false;
             this.dgvPhieuXuat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPhieuXuat.Location = new System.Drawing.Point(14, 19);
             this.dgvPhieuXuat.Name = "dgvPhieuXuat";
+            this.dgvPhieuXuat.RowHeadersVisible = false;
             this.dgvPhieuXuat.RowHeadersWidth = 51;
             this.dgvPhieuXuat.Size = new System.Drawing.Size(544, 388);
             this.dgvPhieuXuat.TabIndex = 22;
@@ -266,53 +315,6 @@
             this.label2.TabIndex = 51;
             this.label2.Text = "Xuất kho";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(34, 216);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(12, 16);
-            this.label7.TabIndex = 50;
-            this.label7.Text = "*";
-            // 
-            // cbox_Xuatkho_Thanhtoan
-            // 
-            this.cbox_Xuatkho_Thanhtoan.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbox_Xuatkho_Thanhtoan.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbox_Xuatkho_Thanhtoan.FormattingEnabled = true;
-            this.cbox_Xuatkho_Thanhtoan.Location = new System.Drawing.Point(125, 216);
-            this.cbox_Xuatkho_Thanhtoan.Name = "cbox_Xuatkho_Thanhtoan";
-            this.cbox_Xuatkho_Thanhtoan.Size = new System.Drawing.Size(173, 21);
-            this.cbox_Xuatkho_Thanhtoan.TabIndex = 52;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(47, 219);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(68, 13);
-            this.label8.TabIndex = 51;
-            this.label8.Text = "Phương thức";
-            // 
-            // txtXuatkho_Thanhtien
-            // 
-            this.txtXuatkho_Thanhtien.Location = new System.Drawing.Point(125, 309);
-            this.txtXuatkho_Thanhtien.Name = "txtXuatkho_Thanhtien";
-            this.txtXuatkho_Thanhtien.ReadOnly = true;
-            this.txtXuatkho_Thanhtien.Size = new System.Drawing.Size(173, 20);
-            this.txtXuatkho_Thanhtien.TabIndex = 54;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(44, 312);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(58, 13);
-            this.label9.TabIndex = 53;
-            this.label9.Text = "Thành tiền";
-            // 
             // fXuatKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -322,7 +324,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnLamMoi);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fXuatKho";
             this.Size = new System.Drawing.Size(923, 651);
             this.groupBox2.ResumeLayout(false);
