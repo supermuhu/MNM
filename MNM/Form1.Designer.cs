@@ -37,6 +37,7 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.btnTKDT = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnChangePass = new System.Windows.Forms.Button();
             this.PanelDropdown = new System.Windows.Forms.Panel();
             this.btnLoaiSP = new System.Windows.Forms.Button();
             this.btnNhomSP = new System.Windows.Forms.Button();
@@ -50,7 +51,6 @@
             this.btnXuatKho = new System.Windows.Forms.Button();
             this.btnNhapKho = new System.Windows.Forms.Button();
             this.btnQLKho = new System.Windows.Forms.Button();
-            this.btnChangePass = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.logocompany = new System.Windows.Forms.PictureBox();
             this.panelControl = new System.Windows.Forms.Panel();
@@ -80,6 +80,7 @@
             // 
             // panel3
             // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.btnClose);
             this.panel3.Controls.Add(this.btnMinimize);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -94,7 +95,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Location = new System.Drawing.Point(931, -2);
+            this.btnClose.Location = new System.Drawing.Point(939, -3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(29, 31);
             this.btnClose.TabIndex = 6;
@@ -108,7 +109,7 @@
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMinimize.ForeColor = System.Drawing.Color.Black;
-            this.btnMinimize.Location = new System.Drawing.Point(896, -2);
+            this.btnMinimize.Location = new System.Drawing.Point(904, -3);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(29, 31);
             this.btnMinimize.TabIndex = 7;
@@ -146,6 +147,21 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(175, 513);
             this.flowLayoutPanel1.TabIndex = 12;
+            // 
+            // btnChangePass
+            // 
+            this.btnChangePass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnChangePass.FlatAppearance.BorderSize = 0;
+            this.btnChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChangePass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangePass.ForeColor = System.Drawing.Color.White;
+            this.btnChangePass.Location = new System.Drawing.Point(3, 3);
+            this.btnChangePass.Name = "btnChangePass";
+            this.btnChangePass.Size = new System.Drawing.Size(173, 51);
+            this.btnChangePass.TabIndex = 15;
+            this.btnChangePass.Text = "Đổi mật khẩu";
+            this.btnChangePass.UseVisualStyleBackColor = false;
+            this.btnChangePass.Click += new System.EventHandler(this.btnChangePass_Click);
             // 
             // PanelDropdown
             // 
@@ -342,21 +358,6 @@
             this.btnQLKho.UseVisualStyleBackColor = false;
             this.btnQLKho.Click += new System.EventHandler(this.btnQLKho_Click);
             // 
-            // btnChangePass
-            // 
-            this.btnChangePass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnChangePass.FlatAppearance.BorderSize = 0;
-            this.btnChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnChangePass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChangePass.ForeColor = System.Drawing.Color.White;
-            this.btnChangePass.Location = new System.Drawing.Point(3, 3);
-            this.btnChangePass.Name = "btnChangePass";
-            this.btnChangePass.Size = new System.Drawing.Size(173, 51);
-            this.btnChangePass.TabIndex = 15;
-            this.btnChangePass.Text = "Đổi mật khẩu";
-            this.btnChangePass.UseVisualStyleBackColor = false;
-            this.btnChangePass.Click += new System.EventHandler(this.btnChangePass_Click);
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -382,6 +383,7 @@
             // 
             // panelControl
             // 
+            this.panelControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl.Location = new System.Drawing.Point(175, 17);
             this.panelControl.Name = "panelControl";
