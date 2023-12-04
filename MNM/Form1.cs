@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace MNM2
 {
@@ -22,13 +23,17 @@ namespace MNM2
         fKhachHang kh = new fKhachHang();
         fDoiMK dmk = new fDoiMK();  
         fThongKeDoanhThu tkdt = new fThongKeDoanhThu();
-
+        string Username;
         public Form1()
         {
             InitializeComponent();
-
-
         }
+        public Form1(string User)
+        {
+            InitializeComponent();
+            Username = User;
+        }
+
 
         private void btnKhachhang_Click(object sender, EventArgs e)
         {
@@ -182,7 +187,9 @@ namespace MNM2
 
         private void btnChangePass_Click(object sender, EventArgs e)
         {
+            fDoiMK dmk = new fDoiMK(Username);
             showControl(dmk);
+            dmk.Show();
         }
 
     }

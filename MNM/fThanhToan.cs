@@ -38,7 +38,8 @@ namespace MNM2
 
         private void dgvPhuongThuc_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvPhuongThuc.Rows.Count == 0) return;
+            if (dgvPhuongThuc.Rows.Count == 0) 
+                return;
             int i = dgvPhuongThuc.SelectedCells[0].RowIndex;
             txtID.Text = dgvPhuongThuc.Rows[i].Cells[0].Value.ToString();
             txtName.Text = dgvPhuongThuc.Rows[i].Cells[1].Value.ToString();
