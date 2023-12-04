@@ -27,11 +27,7 @@ namespace MNM2
         }
         private void dgvThuongHieu_Load()
         {
-            if(cboNhomLK.Items.Count == 0)
-            {
-                dgvThuongHieu.DataSource = null;
-                return;
-            }
+            if (cboNhomLK.SelectedValue == null) return;
             dgvThuongHieu.DataSource = Data.GetData("select * from thuonghieu where id_nhom = @id",
                 new SqlParameter("@id", cboNhomLK.SelectedValue));
         }
@@ -52,7 +48,7 @@ namespace MNM2
         }
         private void dgvThuongHieu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvThuongHieu.SelectedCells[0].Value == null) return;
+            if (dgvThuongHieu.Rows.Count == 0 || dgvThuongHieu.SelectedCells[0].Value == null) return;
             int index = dgvThuongHieu.SelectedCells[0].RowIndex;
             txtMaTH.Text = dgvThuongHieu.Rows[index].Cells[0].Value.ToString();
             txtTenThuongHieu.Text = dgvThuongHieu.Rows[index].Cells[2].Value.ToString();
@@ -73,7 +69,7 @@ namespace MNM2
                 MessageBox.Show("Chưa có nhóm linh kiện");
                 return;
             }
-            if(txtTenThuongHieu.Text == "")
+            if(String.IsNullOrEmpty(txtTenThuongHieu.Text))
             {
                 MessageBox.Show("Chưa có tên thương hiệu");
                 txtTenThuongHieu.Focus();
@@ -128,7 +124,24 @@ namespace MNM2
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-
+            DialogResult a = MessageBox.Show("Bạn chắc chắn muốn xoá thương hiệu", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (a == DialogResult.No)
+            {
+                return;
+            }
+            if(txtMaTH.Text == "")
+            {
+                MessageBox.Show("Chưa chọn thương hiệu để xoá");
+                return;
+            }
+            if (Data.Excute("delete from chitietphieuxuat where id_sanpham in (select id_sanpham from sanpham where id_thuonghieu = @th)", new SqlParameter("@th", txtMaTH.Text))
+                && Data.Excute("delete from chitietphieunhap where id_sanpham in (select id_sanpham from sanpham where id_thuonghieu = @th)", new SqlParameter("@th", txtMaTH.Text))
+                && Data.Excute("delete from sanpham where id_thuonghieu = @th", new SqlParameter("@th", txtMaTH.Text))
+                && Data.Excute("delete from thuonghieu where id_thuonghieu = @th", new SqlParameter("@th", txtMaTH.Text)))
+            {
+                emptyText();
+                dgvThuongHieu_Load();
+            }
         }
     }
 }

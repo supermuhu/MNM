@@ -21,5 +21,18 @@ namespace MNM2
         {
             txtUsername.Focus();
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUsername_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == ' ')
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

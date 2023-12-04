@@ -17,6 +17,12 @@ namespace MNM2
             InitializeComponent();
         }
 
-     
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == ' ')
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

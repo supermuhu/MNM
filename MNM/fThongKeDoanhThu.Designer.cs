@@ -61,6 +61,7 @@
             this.dgvPhuongThuc.ColumnHeadersVisible = false;
             this.dgvPhuongThuc.Location = new System.Drawing.Point(6, 19);
             this.dgvPhuongThuc.Name = "dgvPhuongThuc";
+            this.dgvPhuongThuc.ReadOnly = true;
             this.dgvPhuongThuc.RowHeadersWidth = 51;
             this.dgvPhuongThuc.Size = new System.Drawing.Size(278, 239);
             this.dgvPhuongThuc.TabIndex = 0;
@@ -98,7 +99,7 @@
             "Tháng 11",
             "Tháng 12"});
             this.comboBox2.Location = new System.Drawing.Point(152, 52);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(163, 21);
             this.comboBox2.TabIndex = 35;
@@ -169,7 +170,7 @@
             "Tháng 11",
             "Tháng 12"});
             this.comboBox1.Location = new System.Drawing.Point(152, 25);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(163, 21);
             this.comboBox1.TabIndex = 21;
@@ -191,7 +192,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fThongKeDoanhThu";
             this.Size = new System.Drawing.Size(872, 598);
             this.groupBox3.ResumeLayout(false);

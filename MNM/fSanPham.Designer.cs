@@ -40,18 +40,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvSanPham = new System.Windows.Forms.DataGridView();
-            this.id_linhkien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_thuonghieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenlinhkien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.baohanh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.khuyenmai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ngaytao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ngaycapnhat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.richMoTa = new System.Windows.Forms.TextBox();
             this.nmrSoluong = new System.Windows.Forms.NumericUpDown();
@@ -88,6 +76,18 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.openImage = new System.Windows.Forms.OpenFileDialog();
+            this.soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngaycapnhat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngaytao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.khuyenmai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.baohanh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenlinhkien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_thuonghieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_linhkien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -204,98 +204,6 @@
             this.dgvSanPham.Size = new System.Drawing.Size(559, 449);
             this.dgvSanPham.TabIndex = 39;
             this.dgvSanPham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSanPham_CellClick);
-            // 
-            // id_linhkien
-            // 
-            this.id_linhkien.DataPropertyName = "id_sanpham";
-            this.id_linhkien.HeaderText = "Mã linh kiện";
-            this.id_linhkien.Name = "id_linhkien";
-            this.id_linhkien.ReadOnly = true;
-            // 
-            // id_thuonghieu
-            // 
-            this.id_thuonghieu.DataPropertyName = "id_thuonghieu";
-            this.id_thuonghieu.HeaderText = "Mã thương hiệu";
-            this.id_thuonghieu.Name = "id_thuonghieu";
-            this.id_thuonghieu.ReadOnly = true;
-            this.id_thuonghieu.Width = 110;
-            // 
-            // tenlinhkien
-            // 
-            this.tenlinhkien.DataPropertyName = "tensanpham";
-            this.tenlinhkien.HeaderText = "Tên linh kiện";
-            this.tenlinhkien.Name = "tenlinhkien";
-            this.tenlinhkien.ReadOnly = true;
-            this.tenlinhkien.Width = 156;
-            // 
-            // id_loai
-            // 
-            this.id_loai.DataPropertyName = "id_loai";
-            this.id_loai.HeaderText = "Mã loại";
-            this.id_loai.Name = "id_loai";
-            this.id_loai.ReadOnly = true;
-            this.id_loai.Visible = false;
-            // 
-            // gia
-            // 
-            this.gia.DataPropertyName = "gia";
-            this.gia.HeaderText = "Giá";
-            this.gia.Name = "gia";
-            this.gia.ReadOnly = true;
-            // 
-            // baohanh
-            // 
-            this.baohanh.DataPropertyName = "baohanh";
-            this.baohanh.HeaderText = "Bảo hành";
-            this.baohanh.Name = "baohanh";
-            this.baohanh.ReadOnly = true;
-            this.baohanh.Width = 50;
-            // 
-            // khuyenmai
-            // 
-            this.khuyenmai.DataPropertyName = "khuyenmai";
-            this.khuyenmai.HeaderText = "Khuyến mại";
-            this.khuyenmai.Name = "khuyenmai";
-            this.khuyenmai.ReadOnly = true;
-            this.khuyenmai.Width = 50;
-            // 
-            // hinh
-            // 
-            this.hinh.DataPropertyName = "hinh";
-            this.hinh.HeaderText = "Hình";
-            this.hinh.Name = "hinh";
-            this.hinh.ReadOnly = true;
-            this.hinh.Visible = false;
-            // 
-            // mota
-            // 
-            this.mota.DataPropertyName = "mota";
-            this.mota.HeaderText = "Mô tả";
-            this.mota.Name = "mota";
-            this.mota.ReadOnly = true;
-            this.mota.Width = 70;
-            // 
-            // ngaytao
-            // 
-            this.ngaytao.DataPropertyName = "ngaytao";
-            this.ngaytao.HeaderText = "Ngày tạo";
-            this.ngaytao.Name = "ngaytao";
-            this.ngaytao.ReadOnly = true;
-            // 
-            // ngaycapnhat
-            // 
-            this.ngaycapnhat.DataPropertyName = "ngaycapnhat";
-            this.ngaycapnhat.HeaderText = "Ngày cập nhật";
-            this.ngaycapnhat.Name = "ngaycapnhat";
-            this.ngaycapnhat.ReadOnly = true;
-            // 
-            // soluong
-            // 
-            this.soluong.DataPropertyName = "soluong";
-            this.soluong.HeaderText = "Số lượng";
-            this.soluong.Name = "soluong";
-            this.soluong.ReadOnly = true;
-            this.soluong.Width = 50;
             // 
             // groupBox2
             // 
@@ -435,6 +343,7 @@
             this.cboThuongHieu.Name = "cboThuongHieu";
             this.cboThuongHieu.Size = new System.Drawing.Size(196, 21);
             this.cboThuongHieu.TabIndex = 64;
+            this.cboThuongHieu.SelectedIndexChanged += new System.EventHandler(this.cboThuongHieu_SelectedIndexChanged);
             // 
             // pictureLinhKien
             // 
@@ -660,6 +569,98 @@
             // 
             this.openImage.FileName = "openFileDialog3";
             // 
+            // soluong
+            // 
+            this.soluong.DataPropertyName = "soluong";
+            this.soluong.HeaderText = "Số lượng";
+            this.soluong.Name = "soluong";
+            this.soluong.ReadOnly = true;
+            this.soluong.Width = 50;
+            // 
+            // ngaycapnhat
+            // 
+            this.ngaycapnhat.DataPropertyName = "ngaycapnhat";
+            this.ngaycapnhat.HeaderText = "Ngày cập nhật";
+            this.ngaycapnhat.Name = "ngaycapnhat";
+            this.ngaycapnhat.ReadOnly = true;
+            // 
+            // ngaytao
+            // 
+            this.ngaytao.DataPropertyName = "ngaytao";
+            this.ngaytao.HeaderText = "Ngày tạo";
+            this.ngaytao.Name = "ngaytao";
+            this.ngaytao.ReadOnly = true;
+            // 
+            // mota
+            // 
+            this.mota.DataPropertyName = "mota";
+            this.mota.HeaderText = "Mô tả";
+            this.mota.Name = "mota";
+            this.mota.ReadOnly = true;
+            this.mota.Width = 70;
+            // 
+            // hinh
+            // 
+            this.hinh.DataPropertyName = "hinh";
+            this.hinh.HeaderText = "Hình";
+            this.hinh.Name = "hinh";
+            this.hinh.ReadOnly = true;
+            this.hinh.Visible = false;
+            // 
+            // khuyenmai
+            // 
+            this.khuyenmai.DataPropertyName = "khuyenmai";
+            this.khuyenmai.HeaderText = "Khuyến mại";
+            this.khuyenmai.Name = "khuyenmai";
+            this.khuyenmai.ReadOnly = true;
+            this.khuyenmai.Width = 50;
+            // 
+            // baohanh
+            // 
+            this.baohanh.DataPropertyName = "baohanh";
+            this.baohanh.HeaderText = "Bảo hành";
+            this.baohanh.Name = "baohanh";
+            this.baohanh.ReadOnly = true;
+            this.baohanh.Width = 50;
+            // 
+            // gia
+            // 
+            this.gia.DataPropertyName = "gia";
+            this.gia.HeaderText = "Giá";
+            this.gia.Name = "gia";
+            this.gia.ReadOnly = true;
+            // 
+            // id_loai
+            // 
+            this.id_loai.DataPropertyName = "id_loai";
+            this.id_loai.HeaderText = "Mã loại";
+            this.id_loai.Name = "id_loai";
+            this.id_loai.ReadOnly = true;
+            this.id_loai.Visible = false;
+            // 
+            // tenlinhkien
+            // 
+            this.tenlinhkien.DataPropertyName = "tensanpham";
+            this.tenlinhkien.HeaderText = "Tên linh kiện";
+            this.tenlinhkien.Name = "tenlinhkien";
+            this.tenlinhkien.ReadOnly = true;
+            this.tenlinhkien.Width = 156;
+            // 
+            // id_thuonghieu
+            // 
+            this.id_thuonghieu.DataPropertyName = "id_thuonghieu";
+            this.id_thuonghieu.HeaderText = "Mã thương hiệu";
+            this.id_thuonghieu.Name = "id_thuonghieu";
+            this.id_thuonghieu.ReadOnly = true;
+            this.id_thuonghieu.Width = 110;
+            // 
+            // id_linhkien
+            // 
+            this.id_linhkien.DataPropertyName = "id_sanpham";
+            this.id_linhkien.HeaderText = "Mã linh kiện";
+            this.id_linhkien.Name = "id_linhkien";
+            this.id_linhkien.ReadOnly = true;
+            // 
             // fSanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -738,6 +739,10 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.NumericUpDown nmrSoluong;
+        private System.Windows.Forms.OpenFileDialog openImage;
+        private System.Windows.Forms.TextBox richMoTa;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_linhkien;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_thuonghieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenlinhkien;
@@ -750,9 +755,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ngaytao;
         private System.Windows.Forms.DataGridViewTextBoxColumn ngaycapnhat;
         private System.Windows.Forms.DataGridViewTextBoxColumn soluong;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.NumericUpDown nmrSoluong;
-        private System.Windows.Forms.OpenFileDialog openImage;
-        private System.Windows.Forms.TextBox richMoTa;
     }
 }

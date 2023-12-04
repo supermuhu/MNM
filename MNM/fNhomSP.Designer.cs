@@ -47,6 +47,10 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.id_nhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tennhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngaytao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngaycapnhat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhomSP)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -67,12 +71,20 @@
             // 
             this.dgvNhomSP.AllowUserToAddRows = false;
             this.dgvNhomSP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNhomSP.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id_nhom,
+            this.tennhom,
+            this.ngaytao,
+            this.ngaycapnhat});
             this.dgvNhomSP.Location = new System.Drawing.Point(11, 19);
+            this.dgvNhomSP.MultiSelect = false;
             this.dgvNhomSP.Name = "dgvNhomSP";
+            this.dgvNhomSP.ReadOnly = true;
             this.dgvNhomSP.RowHeadersVisible = false;
             this.dgvNhomSP.RowHeadersWidth = 51;
             this.dgvNhomSP.Size = new System.Drawing.Size(544, 379);
             this.dgvNhomSP.TabIndex = 11;
+            this.dgvNhomSP.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhomSP_CellClick);
             // 
             // label1
             // 
@@ -98,7 +110,7 @@
             // 
             this.txtID.Location = new System.Drawing.Point(122, 22);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(73, 20);
+            this.txtID.Size = new System.Drawing.Size(173, 20);
             this.txtID.TabIndex = 5;
             // 
             // txtName
@@ -189,6 +201,7 @@
             this.btnLamMoi.TabIndex = 21;
             this.btnLamMoi.Text = "Làm mới";
             this.btnLamMoi.UseVisualStyleBackColor = true;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // groupBox1
             // 
@@ -211,6 +224,7 @@
             this.btnThem.TabIndex = 7;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnXoa
             // 
@@ -220,6 +234,7 @@
             this.btnXoa.TabIndex = 9;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -229,6 +244,7 @@
             this.btnSua.TabIndex = 8;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // label2
             // 
@@ -240,6 +256,38 @@
             this.label2.TabIndex = 19;
             this.label2.Text = "Thông tin nhóm linh kiện";
             // 
+            // id_nhom
+            // 
+            this.id_nhom.DataPropertyName = "id_nhom";
+            this.id_nhom.HeaderText = "Mã nhóm";
+            this.id_nhom.Name = "id_nhom";
+            this.id_nhom.ReadOnly = true;
+            this.id_nhom.Width = 150;
+            // 
+            // tennhom
+            // 
+            this.tennhom.DataPropertyName = "tennhom";
+            this.tennhom.HeaderText = "Tên nhóm";
+            this.tennhom.Name = "tennhom";
+            this.tennhom.ReadOnly = true;
+            this.tennhom.Width = 171;
+            // 
+            // ngaytao
+            // 
+            this.ngaytao.DataPropertyName = "ngaytao";
+            this.ngaytao.HeaderText = "Ngày tạo";
+            this.ngaytao.Name = "ngaytao";
+            this.ngaytao.ReadOnly = true;
+            this.ngaytao.Width = 110;
+            // 
+            // ngaycapnhat
+            // 
+            this.ngaycapnhat.DataPropertyName = "ngaycapnhat";
+            this.ngaycapnhat.HeaderText = "Ngày cập nhật";
+            this.ngaycapnhat.Name = "ngaycapnhat";
+            this.ngaycapnhat.ReadOnly = true;
+            this.ngaycapnhat.Width = 110;
+            // 
             // fNhomSP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -249,9 +297,10 @@
             this.Controls.Add(this.btnLamMoi);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fNhomSP";
             this.Size = new System.Drawing.Size(923, 722);
+            this.Load += new System.EventHandler(this.fNhomSP_Load);
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhomSP)).EndInit();
             this.groupBox2.ResumeLayout(false);
@@ -283,5 +332,9 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_nhom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tennhom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ngaytao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ngaycapnhat;
     }
 }

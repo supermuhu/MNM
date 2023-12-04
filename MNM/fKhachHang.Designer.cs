@@ -287,7 +287,9 @@
             this.dgvKhachHang.AllowUserToAddRows = false;
             this.dgvKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKhachHang.Location = new System.Drawing.Point(14, 19);
+            this.dgvKhachHang.MultiSelect = false;
             this.dgvKhachHang.Name = "dgvKhachHang";
+            this.dgvKhachHang.ReadOnly = true;
             this.dgvKhachHang.RowHeadersVisible = false;
             this.dgvKhachHang.RowHeadersWidth = 51;
             this.dgvKhachHang.Size = new System.Drawing.Size(544, 388);
@@ -362,9 +364,9 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fKhachHang";
-            this.Size = new System.Drawing.Size(921, 712);
+            this.Size = new System.Drawing.Size(1032, 712);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox1.ResumeLayout(false);

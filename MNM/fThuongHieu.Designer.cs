@@ -175,6 +175,7 @@
             this.ngaycapnhat});
             this.dgvThuongHieu.Location = new System.Drawing.Point(11, 19);
             this.dgvThuongHieu.Name = "dgvThuongHieu";
+            this.dgvThuongHieu.ReadOnly = true;
             this.dgvThuongHieu.RowHeadersVisible = false;
             this.dgvThuongHieu.RowHeadersWidth = 51;
             this.dgvThuongHieu.Size = new System.Drawing.Size(523, 393);
@@ -186,6 +187,7 @@
             this.id_thuonghieu.DataPropertyName = "id_thuonghieu";
             this.id_thuonghieu.HeaderText = "Mã thương hiệu";
             this.id_thuonghieu.Name = "id_thuonghieu";
+            this.id_thuonghieu.ReadOnly = true;
             this.id_thuonghieu.Width = 110;
             // 
             // id_nhom
@@ -193,6 +195,7 @@
             this.id_nhom.DataPropertyName = "id_nhom";
             this.id_nhom.HeaderText = "Mã nhóm linh kiện";
             this.id_nhom.Name = "id_nhom";
+            this.id_nhom.ReadOnly = true;
             this.id_nhom.Width = 120;
             // 
             // tenthuonghieu
@@ -200,6 +203,7 @@
             this.tenthuonghieu.DataPropertyName = "tenthuonghieu";
             this.tenthuonghieu.HeaderText = "Tên thương hiệu";
             this.tenthuonghieu.Name = "tenthuonghieu";
+            this.tenthuonghieu.ReadOnly = true;
             this.tenthuonghieu.Width = 110;
             // 
             // ngaytao
@@ -207,12 +211,14 @@
             this.ngaytao.DataPropertyName = "ngaytao";
             this.ngaytao.HeaderText = "Ngày tạo";
             this.ngaytao.Name = "ngaytao";
+            this.ngaytao.ReadOnly = true;
             // 
             // ngaycapnhat
             // 
             this.ngaycapnhat.DataPropertyName = "ngaycapnhat";
             this.ngaycapnhat.HeaderText = "Ngày cập nhật";
             this.ngaycapnhat.Name = "ngaycapnhat";
+            this.ngaycapnhat.ReadOnly = true;
             // 
             // btnThem
             // 
@@ -298,7 +304,7 @@
             this.Controls.Add(this.label2);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fThuongHieu";
-            this.Size = new System.Drawing.Size(882, 628);
+            this.Size = new System.Drawing.Size(1016, 628);
             this.Load += new System.EventHandler(this.fThuongHieu_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();

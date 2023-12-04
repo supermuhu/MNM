@@ -199,6 +199,7 @@
             this.dgvPhieuNhap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPhieuNhap.Location = new System.Drawing.Point(14, 19);
             this.dgvPhieuNhap.Name = "dgvPhieuNhap";
+            this.dgvPhieuNhap.ReadOnly = true;
             this.dgvPhieuNhap.RowHeadersVisible = false;
             this.dgvPhieuNhap.RowHeadersWidth = 51;
             this.dgvPhieuNhap.Size = new System.Drawing.Size(544, 388);
@@ -300,9 +301,9 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fNhapKho";
-            this.Size = new System.Drawing.Size(850, 665);
+            this.Size = new System.Drawing.Size(968, 665);
             ((System.ComponentModel.ISupportInitialize)(this.nmrSoLuong)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhieuNhap)).EndInit();

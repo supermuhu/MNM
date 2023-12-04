@@ -30,7 +30,7 @@ namespace MNM2
         private void cboLoaiLK_Load()
         {
             cboLoaiLK.DataSource = null;
-            if (cboNhomLK.Items.Count == 0) return;
+            if (cboNhomLK.SelectedValue == null) return;
             cboLoaiLK.ValueMember = "id_loai";
             cboLoaiLK.DisplayMember = "tenloai";
             cboLoaiLK.DataSource = Data.GetData("select * from loaisanpham where id_nhom = @id", 
@@ -39,7 +39,7 @@ namespace MNM2
         private void cboThuongHieu_Load()
         {
             cboThuongHieu.DataSource = null;
-            if (cboNhomLK.Items.Count == 0) return;
+            if (cboNhomLK.SelectedValue == null) return;
             cboThuongHieu.ValueMember = "id_thuonghieu";
             cboThuongHieu.DisplayMember = "tenthuonghieu";
             cboThuongHieu.DataSource = Data.GetData("select * from thuonghieu where id_nhom = @id",
@@ -47,54 +47,50 @@ namespace MNM2
         }
         private void dgvSanPham_Load()
         {
-            //pictureLinhKien.BackgroundImage = null;
-            SqlParameter args;
-            if (cboLoaiLK.DataSource == null)
-            {
-                args = new SqlParameter("@id", "");
-            }
-            else
-            {
-                args = new SqlParameter("@id", cboLoaiLK.SelectedValue);
-            }
-            dgvSanPham.DataSource = Data.GetData("select * from sanpham where id_loai = @id", args);
+            dgvSanPham.DataSource = null;
+            if (cboLoaiLK.SelectedValue == null || cboThuongHieu.SelectedValue == null) return;
+            dgvSanPham.DataSource = Data.GetData("select * from sanpham where id_loai = @id and id_thuonghieu = @th",
+                new SqlParameter("@id", cboLoaiLK.SelectedValue),
+                new SqlParameter("@th", cboThuongHieu.SelectedValue));
+            dgvSanPham.Columns[0].HeaderText = "Mã linh kiện";
+            dgvSanPham.Columns[1].HeaderText = "Mã thương hiệu";
+            dgvSanPham.Columns[2].HeaderText = "Tên linh kiện";
+            dgvSanPham.Columns[3].HeaderText = "Mã loại";
+            dgvSanPham.Columns[4].HeaderText = "Giá";
+            dgvSanPham.Columns[5].HeaderText = "Bảo hành";
+            dgvSanPham.Columns[6].HeaderText = "Khuyến mại";
+            dgvSanPham.Columns[7].HeaderText = "Hình";
+            dgvSanPham.Columns[8].HeaderText = "Mô tả";
+            dgvSanPham.Columns[9].HeaderText = "Ngày tạo";
+            dgvSanPham.Columns[10].HeaderText = "Ngày cập nhật";
+            dgvSanPham.Columns[11].HeaderText = "Số lượng";
+            dgvSanPham.Columns[0].Width = 100;
+            dgvSanPham.Columns[1].Width = 110;
+            dgvSanPham.Columns[2].Width = 150;
+            dgvSanPham.Columns[3].Width = 100;
+            dgvSanPham.Columns[4].Width = 120;
+            dgvSanPham.Columns[5].Width = 80;
+            dgvSanPham.Columns[6].Width = 100;
+            dgvSanPham.Columns[7].Width = 100;
+            dgvSanPham.Columns[8].Width = 120;
+            dgvSanPham.Columns[9].Width = 110;
+            dgvSanPham.Columns[10].Width = 110;
+            dgvSanPham.Columns[11].Width = 100;
         }
         private void fSanPham_Load(object sender, EventArgs e)
         {
             cboNhomLK_Load();
-            cboThuongHieu_Load();
             txtMaLinhKien.Text = AutoNameLinkKien();
         }
 
         private void dgvSanPham_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if (dgvSanPham.SelectedCells[0].Value == null) return;
+            if (dgvSanPham.Rows.Count == 0 || dgvSanPham.SelectedCells[0].Value == null) return;
             int index = dgvSanPham.SelectedCells[0].RowIndex;
             //pictureLinhKien.BackgroundImage = Image.FromFile(Directory.GetCurrentDirectory() + @"\image\" + dgvSanPham.Rows[index].Cells[7].Value);
-            string imagePath = dgvSanPham.Rows[index].Cells[7].Value.ToString();
+            //string imagePath = dgvSanPham.Rows[index].Cells[7].Value.ToString();
             linkImage = dgvSanPham.Rows[index].Cells[7].Value.ToString();
-            //if (!string.IsNullOrWhiteSpace(imagePath))
-            //{
-            //    // Đảm bảo đường dẫn hình ảnh không rỗng hoặc null trước khi cố gắng mở nó
-            //    string fullPath = Path.Combine(Directory.GetCurrentDirectory(), "image", imagePath);
-
-            //    if (File.Exists(fullPath))
-            //    {
-            //        // Mở hình ảnh nếu tệp tồn tại
-            //        pictureLinhKien.BackgroundImage = Image.FromFile(fullPath);
-            //    }
-            //    else
-            //    {
-            //        // Xử lý khi tệp không tồn tại
-            //        MessageBox.Show("Tệp hình ảnh không tồn tại.");
-            //    }
-            //}
-            //else
-            //{
-            //    // Xử lý khi đường dẫn hình ảnh là rỗng
-            //    MessageBox.Show("Rỗng");
-            //    return;
-            //}
+            pictureLinhKien.BackgroundImage = Image.FromFile(Directory.GetCurrentDirectory() + @"\image\" + linkImage);
             txtMaLinhKien.Text = dgvSanPham.Rows[index].Cells[0].Value.ToString();
             txtTenLinhKien.Text = dgvSanPham.Rows[index].Cells[2].Value.ToString();
             txtGia.Text = dgvSanPham.Rows[index].Cells[4].Value.ToString();
@@ -118,7 +114,6 @@ namespace MNM2
             txtNgayTao.Text = "";
             txtCapNhat.Text = "";
             nmrSoluong.Value = 0;
-            cboThuongHieu_Load();
         }
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
@@ -129,6 +124,7 @@ namespace MNM2
         private void cboNhomLK_SelectedIndexChanged(object sender, EventArgs e)
         {
             cboLoaiLK_Load();
+            cboThuongHieu_Load();
             emptyText();
         }
 
@@ -299,12 +295,29 @@ namespace MNM2
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (Data.Excute("delete chitietphieunhap where id_sanpham = @sp ", new SqlParameter("@sp", txtMaLinhKien.Text)) &&
-                Data.Excute("delete sanpham where id_sanpham = @sp ", new SqlParameter("@sp", txtMaLinhKien.Text)))
+            DialogResult a = MessageBox.Show("Bạn chắc chắn muốn xoá sản linh kiện", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (a == DialogResult.No)
+            {
+                return;
+            }
+            if (String.IsNullOrEmpty(txtTenLinhKien.Text) || pictureLinhKien.BackgroundImage == null || String.IsNullOrEmpty(txtGia.Text))
+            {
+                MessageBox.Show("Chưa chọn linh kiện để xoá");
+                return;
+            }
+            if (Data.Excute("delete from chitietphieunhap where id_sanpham = @sp ", new SqlParameter("@sp", txtMaLinhKien.Text))
+                && Data.Excute("delete from chitietphieuxuat where id_sanpham = @sp ", new SqlParameter("@sp", txtMaLinhKien.Text))
+                && Data.Excute("delete from sanpham where id_sanpham = @sp ", new SqlParameter("@sp", txtMaLinhKien.Text)))
             {
                 emptyText();
                 dgvSanPham_Load();
             }
         }
+
+        private void cboThuongHieu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dgvSanPham_Load();
+        }
+
     }
 }

@@ -43,6 +43,11 @@
             this.txtNgayTao = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvLoaiSP = new System.Windows.Forms.DataGridView();
+            this.id_loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_nhom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenloai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngaytao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngaycapnhat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
@@ -115,6 +120,7 @@
             this.cboNhomLK.Name = "cboNhomLK";
             this.cboNhomLK.Size = new System.Drawing.Size(173, 21);
             this.cboNhomLK.TabIndex = 33;
+            this.cboNhomLK.SelectedIndexChanged += new System.EventHandler(this.cboNhomLK_SelectedIndexChanged);
             // 
             // a
             // 
@@ -155,7 +161,6 @@
             // 
             this.txtMaLoai.Location = new System.Drawing.Point(148, 83);
             this.txtMaLoai.Name = "txtMaLoai";
-            this.txtMaLoai.ReadOnly = true;
             this.txtMaLoai.Size = new System.Drawing.Size(73, 20);
             this.txtMaLoai.TabIndex = 19;
             // 
@@ -197,12 +202,66 @@
             // 
             this.dgvLoaiSP.AllowUserToAddRows = false;
             this.dgvLoaiSP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLoaiSP.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id_loai,
+            this.id_nhom,
+            this.tenloai,
+            this.ngaytao,
+            this.ngaycapnhat});
             this.dgvLoaiSP.Location = new System.Drawing.Point(14, 19);
+            this.dgvLoaiSP.MultiSelect = false;
             this.dgvLoaiSP.Name = "dgvLoaiSP";
+            this.dgvLoaiSP.ReadOnly = true;
             this.dgvLoaiSP.RowHeadersVisible = false;
             this.dgvLoaiSP.RowHeadersWidth = 51;
             this.dgvLoaiSP.Size = new System.Drawing.Size(544, 388);
             this.dgvLoaiSP.TabIndex = 22;
+            this.dgvLoaiSP.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLoaiSP_CellClick);
+            // 
+            // id_loai
+            // 
+            this.id_loai.DataPropertyName = "id_loai";
+            this.id_loai.FillWeight = 85F;
+            this.id_loai.HeaderText = "Mã loại";
+            this.id_loai.Name = "id_loai";
+            this.id_loai.ReadOnly = true;
+            this.id_loai.Width = 85;
+            // 
+            // id_nhom
+            // 
+            this.id_nhom.DataPropertyName = "id_nhom";
+            this.id_nhom.FillWeight = 85F;
+            this.id_nhom.HeaderText = "Mã nhóm";
+            this.id_nhom.Name = "id_nhom";
+            this.id_nhom.ReadOnly = true;
+            this.id_nhom.Width = 85;
+            // 
+            // tenloai
+            // 
+            this.tenloai.DataPropertyName = "tenloai";
+            this.tenloai.FillWeight = 151F;
+            this.tenloai.HeaderText = "Tên loại";
+            this.tenloai.Name = "tenloai";
+            this.tenloai.ReadOnly = true;
+            this.tenloai.Width = 151;
+            // 
+            // ngaytao
+            // 
+            this.ngaytao.DataPropertyName = "ngaytao";
+            this.ngaytao.FillWeight = 110F;
+            this.ngaytao.HeaderText = "Ngày tạo";
+            this.ngaytao.Name = "ngaytao";
+            this.ngaytao.ReadOnly = true;
+            this.ngaytao.Width = 110;
+            // 
+            // ngaycapnhat
+            // 
+            this.ngaycapnhat.DataPropertyName = "ngaycapnhat";
+            this.ngaycapnhat.FillWeight = 110F;
+            this.ngaycapnhat.HeaderText = "Ngày cập nhật";
+            this.ngaycapnhat.Name = "ngaycapnhat";
+            this.ngaycapnhat.ReadOnly = true;
+            this.ngaycapnhat.Width = 110;
             // 
             // btnThem
             // 
@@ -212,6 +271,7 @@
             this.btnThem.TabIndex = 7;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnXoa
             // 
@@ -221,6 +281,7 @@
             this.btnXoa.TabIndex = 9;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -230,6 +291,7 @@
             this.btnSua.TabIndex = 8;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // groupBox1
             // 
@@ -252,6 +314,7 @@
             this.btnLamMoi.TabIndex = 38;
             this.btnLamMoi.Text = "Làm mới";
             this.btnLamMoi.UseVisualStyleBackColor = true;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // label2
             // 
@@ -272,9 +335,10 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnLamMoi);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fLoaiSP";
             this.Size = new System.Drawing.Size(934, 766);
+            this.Load += new System.EventHandler(this.fLoaiSP_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -308,5 +372,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnLamMoi;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_loai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_nhom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tenloai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ngaytao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ngaycapnhat;
     }
 }

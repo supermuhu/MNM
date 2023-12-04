@@ -1,0 +1,4 @@
+1. Nhập -> tăng số lượng sản phẩm
+2. Xuất -> giảm số lượng sản phẩm
+3. Phiếu nhập, xuất: tongtien default 0
+4. Thay đổi chitietphieunhap, chitietphieuxuat thì thay đổi thành tiền

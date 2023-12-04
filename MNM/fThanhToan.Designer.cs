@@ -40,7 +40,6 @@
             this.btnLamMoi = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnThem = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
@@ -52,9 +51,9 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dgvPhuongThuc);
-            this.groupBox3.Location = new System.Drawing.Point(442, 184);
+            this.groupBox3.Location = new System.Drawing.Point(441, 188);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(290, 264);
+            this.groupBox3.Size = new System.Drawing.Size(290, 240);
             this.groupBox3.TabIndex = 28;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Danh sách phương thức thanh toán";
@@ -64,11 +63,14 @@
             this.dgvPhuongThuc.AllowUserToAddRows = false;
             this.dgvPhuongThuc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPhuongThuc.Location = new System.Drawing.Point(6, 19);
+            this.dgvPhuongThuc.MultiSelect = false;
             this.dgvPhuongThuc.Name = "dgvPhuongThuc";
+            this.dgvPhuongThuc.ReadOnly = true;
             this.dgvPhuongThuc.RowHeadersVisible = false;
             this.dgvPhuongThuc.RowHeadersWidth = 51;
-            this.dgvPhuongThuc.Size = new System.Drawing.Size(278, 239);
+            this.dgvPhuongThuc.Size = new System.Drawing.Size(278, 215);
             this.dgvPhuongThuc.TabIndex = 0;
+            this.dgvPhuongThuc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhuongThuc_CellClick);
             // 
             // groupBox2
             // 
@@ -148,11 +150,11 @@
             this.btnLamMoi.TabIndex = 26;
             this.btnLamMoi.Text = "Làm mới";
             this.btnLamMoi.UseVisualStyleBackColor = true;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnThem);
-            this.groupBox1.Controls.Add(this.btnXoa);
             this.groupBox1.Controls.Add(this.btnSua);
             this.groupBox1.Location = new System.Drawing.Point(129, 368);
             this.groupBox1.Name = "groupBox1";
@@ -164,30 +166,23 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(6, 19);
+            this.btnThem.Location = new System.Drawing.Point(38, 19);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 7;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.Location = new System.Drawing.Point(179, 19);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 23);
-            this.btnXoa.TabIndex = 9;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(92, 19);
+            this.btnSua.Location = new System.Drawing.Point(147, 19);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 8;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // label2
             // 
@@ -208,9 +203,10 @@
             this.Controls.Add(this.btnLamMoi);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fThanhToan";
             this.Size = new System.Drawing.Size(844, 549);
+            this.Load += new System.EventHandler(this.fThanhToan_Load);
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhuongThuc)).EndInit();
             this.groupBox2.ResumeLayout(false);
@@ -235,7 +231,6 @@
         private System.Windows.Forms.Button btnLamMoi;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnThem;
-        private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Label label2;
     }
