@@ -107,7 +107,7 @@ namespace MNM2
             }
         }
         private void dgvKhachHang_Load()
-        {
+        {   
             dgvKhachHang.DataSource = Data.GetData("select * from khachhang");
             dgvKhachHang.Columns[0].HeaderText = "Mã khách hàng";
             dgvKhachHang.Columns[1].HeaderText = "Email";
@@ -226,6 +226,91 @@ namespace MNM2
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            String query = "select * from khachhang where ";
+            if (chkboMa.Checked && !String.IsNullOrEmpty(tkMa.Text))
+            {
+                if (query == "select * from khachhang where ")
+                    query += "id_khachhang like @id ";
+                else
+                    query += "and id_khachhang like @id ";
+            }
+            if (chkboTen.Checked && !String.IsNullOrEmpty(tkTen.Text))
+            {
+                if (query == "select * from khachhang where ")
+                    query += "ten like @ten ";
+                else
+                    query += "and ten like @ten ";
+            }
+            if (chkboEmail.Checked && !String.IsNullOrEmpty(tkEmail.Text))
+            {
+                if (query == "select * from khachhang where ")
+                    query += "email like @email ";
+                else
+                    query += "and email like @email ";
+            }
+            if (chkboDiaChi.Checked && !String.IsNullOrEmpty(tkDiaChi.Text))
+            {
+                if (query == "select * from khachhang where ")
+                    query += "diachi like @diachi ";
+                else
+                    query += "and diachi like @diachi ";
+            }
+            if (chkboSDT.Checked && !String.IsNullOrEmpty(tkSDT.Text))
+            {
+                if (query == "select * from khachhang where ")
+                    query += "sodienthoai like @dt ";
+                else
+                    query += "and sodienthoai like @dt ";
+            }
+            if (dateTao.Checked)
+            {
+                if (query == "select * from khachhang where ")
+                    query += "ngaytao like @tao ";
+                else
+                    query += "and ngaytao like @tao ";
+            }
+            if (dateCapNhat.Checked)
+            {
+                if (query == "select * from khachhang where ")
+                    query += "ngaycapnhat like @capnhat ";
+                else
+                    query += "and ngaycapnhat like @capnhat ";
+            }
+            if(query == "select * from khachhang where ")
+            {
+                MessageBox.Show("Chưa chọn tiêu chí tìm kiếm");
+                return;
+            }
+            SqlParameter[] args = 
+            {
+                new SqlParameter("@id", "%" + tkMa.Text + "%"),
+                new SqlParameter("@ten", "%" + tkTen.Text + "%"),
+                new SqlParameter("@email", "%" + tkEmail.Text + "%"),
+                new SqlParameter("@diachi", "%" + tkDiaChi.Text + "%"),
+                new SqlParameter("@dt", "%" + tkSDT.Text + "%"),
+                new SqlParameter("@tao", "%" + tkDateTao.Value.ToString("yyyy-MM-dd") + "%"),
+                new SqlParameter("@capnhat", "%" + tkDateCapNhat.Value.ToString("yyyy-MM-dd") + "%")
+            };
+            //MessageBox.Show(query);
+            dgvKhachHang.DataSource = Data.GetData(query, args);
+            //dgvKhachHang.Columns[0].HeaderText = "Mã khách hàng";
+            //dgvKhachHang.Columns[1].HeaderText = "Email";
+            //dgvKhachHang.Columns[2].HeaderText = "Tên";
+            //dgvKhachHang.Columns[3].HeaderText = "Điện thoại";
+            //dgvKhachHang.Columns[4].HeaderText = "Địa chỉ";
+            //dgvKhachHang.Columns[5].HeaderText = "Ngày tạo";
+            //dgvKhachHang.Columns[6].HeaderText = "Ngày cập nhật";
+            //dgvKhachHang.Columns[0].Width = 100;
+            //dgvKhachHang.Columns[1].Width = 150;
+            //dgvKhachHang.Columns[2].Width = 150;
+            //dgvKhachHang.Columns[3].Width = 100;
+            //dgvKhachHang.Columns[4].Width = 150;
+            //dgvKhachHang.Columns[5].Width = 110;
+            //dgvKhachHang.Columns[6].Width = 110;
         }
     }
 }

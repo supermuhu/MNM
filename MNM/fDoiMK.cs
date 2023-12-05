@@ -199,6 +199,7 @@ namespace MNM2
             else
             {
                 MessageBox.Show("Nhắc lại sai mật khẩu");
+                txtNewPassUser2.Clear();
                 txtNewPassUser2.Focus();
             }
         }
