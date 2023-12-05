@@ -71,14 +71,13 @@ namespace MNM2
                             else
                             {
                                 MessageBox.Show("Sai tài khoản hoặc mật khẩu");
-                                txtUsername.Clear();
-                                txtPassword.Clear();
                                 txtUsername.Focus();
                             }
                         }
                         else
                         {
                             MessageBox.Show("Tài khoản không tồn tại");
+                            txtUsername.Focus();
                         }
                     
                        

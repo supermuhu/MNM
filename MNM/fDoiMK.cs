@@ -56,6 +56,24 @@ namespace MNM2
 
         private void btnXacNhan_Click(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(txtOldPass.Text))
+            {
+                MessageBox.Show("Chưa nhập mật khẩu cũ");
+                txtOldPass.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(txtNewPass1.Text))
+            {
+                MessageBox.Show("Chưa nhập mật khẩu mới");
+                txtNewPass1.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(txtNewPass2.Text))
+            {
+                MessageBox.Show("Chưa nhập lại mật khẩu mới");
+                txtNewPass2.Focus();
+                return;
+            }
             using (SqlConnection Conn = new SqlConnection(Data.GetStringConnection()))
             {
                 Conn.Open();
@@ -77,8 +95,20 @@ namespace MNM2
                                 if (verifyPassword)
                                 {
                                     string newHashedPassword = PasswordHasher.HashPassword(txtNewPass1.Text);
-                                    if (Data.Excute("UPDATE taikhoan SET pass = @NewMK Where tk = @Username",
+                                    if (PasswordHasher.VerifyPassword(txtNewPass1.Text, storedHashedPassword))
+                                    {
+                                        MessageBox.Show("Trùng với mật khẩu gốc");
+                                        txtNewPass1.Text = "";
+                                        txtNewPass2.Text = "";
+                                        txtNewPass1.Focus();
+                                        return;
+                                    }
+                                    if (Data.Excute("update taikhoan " +
+                                        "set pass = @NewMK," +
+                                        "ngaycapnhat = @capnhat " +
+                                        "Where tk = @Username",
                                     new SqlParameter("@NewMK", newHashedPassword),
+                                    new SqlParameter("@capnhat", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")),
                                     new SqlParameter("@Username", Username)))
                                     {
                                         MessageBox.Show("Đổi mật khẩu thành công!", "Thông báo");
@@ -95,19 +125,19 @@ namespace MNM2
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Nhập sai mật khẩu cũ!Mời nhập lại", "Thông báo");
-                                    txtNewPass1.Clear();
-                                    txtNewPass2.Clear();
+                                    MessageBox.Show("Nhập sai mật khẩu cũ! Mời nhập lại", "Thông báo");
+                                    //txtNewPass1.Clear();
+                                    //txtNewPass2.Clear();
                                     txtOldPass.Clear();
                                     txtOldPass.Focus();
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Hai mật khẩu không trùng khớp!Mời nhập lại", "Thông báo");
+                                MessageBox.Show("Hai mật khẩu không trùng khớp! Mời nhập lại", "Thông báo");
                                 txtNewPass1.Clear();
                                 txtNewPass2.Clear();
-                                txtOldPass.Focus();
+                                txtNewPass2.Focus();
                             }
                         }
 
@@ -123,6 +153,30 @@ namespace MNM2
         private void btnThem_Click(object sender, EventArgs e)
         {
             ntk = txtNewUser.Text;
+            if(ntk == Data.Scalar("select tk from taikhoan where tk = @t", new SqlParameter("@t", ntk)))
+            {
+                MessageBox.Show("Trùng tài khoản đã có");
+                txtNewUser.Clear();
+                return;
+            }
+            if (String.IsNullOrEmpty(txtNewUser.Text))
+            {
+                MessageBox.Show("Chưa nhập tài khoản mới");
+                txtNewUser.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(txtNewPassUser1.Text))
+            {
+                MessageBox.Show("Chưa nhập mật khẩu mới");
+                txtNewPassUser1.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(txtNewPassUser2.Text))
+            {
+                MessageBox.Show("Chưa nhập lại mật khẩu mới");
+                txtNewPassUser2.Focus();
+                return;
+            }
             nmk = txtNewPassUser1.Text;
             if(nmk == txtNewPassUser2.Text)
             {
@@ -141,6 +195,11 @@ namespace MNM2
                     txtNewPassUser1.Clear();
                     dgvTaiKhoan_Load();
                 }
+            }
+            else
+            {
+                MessageBox.Show("Nhắc lại sai mật khẩu");
+                txtNewPassUser2.Focus();
             }
         }
 
@@ -176,13 +235,18 @@ namespace MNM2
             {
                 index = dgvTaiKhoan.SelectedCells[0].RowIndex;
             }
-                if (Data.Excute("delete from taikhoan where tk = @ExistTk", new SqlParameter("@ExistTk", dgvTaiKhoan.Rows[index].Cells[0].Value.ToString())))
-                {
+            if (dgvTaiKhoan.Rows[index].Cells[0].Value.ToString() == "admin") 
+            {
+                MessageBox.Show("Không được xoá tài khoản admin");
+                return;
+            }
+            if (Data.Excute("delete from taikhoan where tk = @ExistTk", new SqlParameter("@ExistTk", dgvTaiKhoan.Rows[index].Cells[0].Value.ToString())))
+            {
                 dgvTaiKhoan_Load();
-                }
-            
+            }
+
         }
 
-     
+
     }
 }
