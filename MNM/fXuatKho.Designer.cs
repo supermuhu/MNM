@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cboKhachHang = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cboPhieuXuat = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbox_Xuatkho_Thanhtoan = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -50,10 +54,6 @@
             this.btnXuatKho = new System.Windows.Forms.Button();
             this.btnLamMoi = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.cboPhieuXuat = new System.Windows.Forms.ComboBox();
-            this.cboKhachHang = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.txtTongTien = new System.Windows.Forms.TextBox();
             this.lblTongTien = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
@@ -90,6 +90,42 @@
             this.groupBox2.TabIndex = 55;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin phiếu xuất";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Location = new System.Drawing.Point(46, 333);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(12, 16);
+            this.label10.TabIndex = 58;
+            this.label10.Text = "*";
+            // 
+            // cboKhachHang
+            // 
+            this.cboKhachHang.FormattingEnabled = true;
+            this.cboKhachHang.Location = new System.Drawing.Point(124, 89);
+            this.cboKhachHang.Name = "cboKhachHang";
+            this.cboKhachHang.Size = new System.Drawing.Size(174, 21);
+            this.cboKhachHang.TabIndex = 57;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(34, 92);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(82, 13);
+            this.label9.TabIndex = 56;
+            this.label9.Text = "Mã khách hàng";
+            // 
+            // cboPhieuXuat
+            // 
+            this.cboPhieuXuat.FormattingEnabled = true;
+            this.cboPhieuXuat.Location = new System.Drawing.Point(124, 40);
+            this.cboPhieuXuat.Name = "cboPhieuXuat";
+            this.cboPhieuXuat.Size = new System.Drawing.Size(174, 21);
+            this.cboPhieuXuat.TabIndex = 55;
             // 
             // label7
             // 
@@ -242,7 +278,7 @@
             this.groupBox3.Size = new System.Drawing.Size(573, 400);
             this.groupBox3.TabIndex = 54;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Danh sách phiếu xuất";
+            this.groupBox3.Text = "Chi tiết phiếu xuất";
             // 
             // dgvPhieuXuat
             // 
@@ -294,42 +330,6 @@
             this.label2.Size = new System.Drawing.Size(161, 39);
             this.label2.TabIndex = 51;
             this.label2.Text = "Xuất kho";
-            // 
-            // cboPhieuXuat
-            // 
-            this.cboPhieuXuat.FormattingEnabled = true;
-            this.cboPhieuXuat.Location = new System.Drawing.Point(124, 40);
-            this.cboPhieuXuat.Name = "cboPhieuXuat";
-            this.cboPhieuXuat.Size = new System.Drawing.Size(174, 21);
-            this.cboPhieuXuat.TabIndex = 55;
-            // 
-            // cboKhachHang
-            // 
-            this.cboKhachHang.FormattingEnabled = true;
-            this.cboKhachHang.Location = new System.Drawing.Point(124, 89);
-            this.cboKhachHang.Name = "cboKhachHang";
-            this.cboKhachHang.Size = new System.Drawing.Size(174, 21);
-            this.cboKhachHang.TabIndex = 57;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(34, 92);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(82, 13);
-            this.label9.TabIndex = 56;
-            this.label9.Text = "Mã khách hàng";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(46, 333);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(12, 16);
-            this.label10.TabIndex = 58;
-            this.label10.Text = "*";
             // 
             // txtTongTien
             // 
