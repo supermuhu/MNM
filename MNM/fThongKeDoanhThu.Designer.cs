@@ -62,9 +62,9 @@
             // 
             this.groupBox3.Controls.Add(this.dgvhangnhap);
             this.groupBox3.Location = new System.Drawing.Point(56, 267);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(559, 325);
             this.groupBox3.TabIndex = 33;
             this.groupBox3.TabStop = false;
@@ -75,9 +75,8 @@
             // 
             this.dgvhangnhap.AllowUserToAddRows = false;
             this.dgvhangnhap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvhangnhap.ColumnHeadersVisible = false;
             this.dgvhangnhap.Location = new System.Drawing.Point(8, 31);
-            this.dgvhangnhap.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvhangnhap.Margin = new System.Windows.Forms.Padding(4);
             this.dgvhangnhap.Name = "dgvhangnhap";
             this.dgvhangnhap.ReadOnly = true;
             this.dgvhangnhap.RowHeadersWidth = 51;
@@ -95,9 +94,9 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.btnLamMoi);
             this.groupBox2.Location = new System.Drawing.Point(56, 109);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(447, 144);
             this.groupBox2.TabIndex = 32;
             this.groupBox2.TabStop = false;
@@ -106,7 +105,7 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.Location = new System.Drawing.Point(180, 64);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(265, 22);
             this.dateTimePicker2.TabIndex = 37;
@@ -114,7 +113,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(180, 23);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(265, 22);
             this.dateTimePicker1.TabIndex = 36;
@@ -166,7 +165,7 @@
             // btnLamMoi
             // 
             this.btnLamMoi.Location = new System.Drawing.Point(323, 108);
-            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(4);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(100, 28);
             this.btnLamMoi.TabIndex = 31;
@@ -188,7 +187,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(473, 616);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(132, 22);
             this.textBox1.TabIndex = 35;
@@ -196,7 +195,7 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(1164, 659);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(132, 22);
             this.textBox2.TabIndex = 36;
@@ -225,9 +224,9 @@
             // 
             this.groupBox1.Controls.Add(this.dgvhangxuat);
             this.groupBox1.Location = new System.Drawing.Point(753, 267);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(544, 325);
             this.groupBox1.TabIndex = 34;
             this.groupBox1.TabStop = false;
@@ -237,9 +236,8 @@
             // 
             this.dgvhangxuat.AllowUserToAddRows = false;
             this.dgvhangxuat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvhangxuat.ColumnHeadersVisible = false;
             this.dgvhangxuat.Location = new System.Drawing.Point(8, 31);
-            this.dgvhangxuat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvhangxuat.Margin = new System.Windows.Forms.Padding(4);
             this.dgvhangxuat.Name = "dgvhangxuat";
             this.dgvhangxuat.ReadOnly = true;
             this.dgvhangxuat.RowHeadersWidth = 51;
@@ -249,7 +247,7 @@
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(473, 659);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(132, 22);
             this.textBox3.TabIndex = 39;
@@ -283,7 +281,7 @@
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(1164, 620);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(132, 22);
             this.textBox4.TabIndex = 41;
