@@ -82,7 +82,7 @@ namespace MNM2
             cboNhomLK_Load();
             txtMaLinhKien.Text = AutoNameLinkKien();
         }
-
+        
         private void dgvSanPham_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvSanPham.Rows.Count == 0 || dgvSanPham.SelectedCells[0].Value == null) return;

@@ -177,6 +177,7 @@ namespace MNM2
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.Cancel;
             Application.Exit();
         }
 
@@ -192,5 +193,19 @@ namespace MNM2
             dmk.Show();
         }
 
+        private void panelControl_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
