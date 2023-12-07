@@ -40,7 +40,6 @@
             this.cboMaLK = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.cboTenLK = new System.Windows.Forms.ComboBox();
             this.aaa = new System.Windows.Forms.Label();
             this.nmrSoLuong = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
@@ -56,6 +55,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtTongTien = new System.Windows.Forms.TextBox();
             this.lblTongTien = new System.Windows.Forms.Label();
+            this.txtTenLinhKien = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrSoLuong)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -65,6 +65,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtTenLinhKien);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.cboKhachHang);
             this.groupBox2.Controls.Add(this.label9);
@@ -76,7 +77,6 @@
             this.groupBox2.Controls.Add(this.cboMaLK);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.cboTenLK);
             this.groupBox2.Controls.Add(this.aaa);
             this.groupBox2.Controls.Add(this.nmrSoLuong);
             this.groupBox2.Controls.Add(this.label5);
@@ -197,16 +197,6 @@
             this.label6.Size = new System.Drawing.Size(12, 16);
             this.label6.TabIndex = 47;
             this.label6.Text = "*";
-            // 
-            // cboTenLK
-            // 
-            this.cboTenLK.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cboTenLK.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboTenLK.FormattingEnabled = true;
-            this.cboTenLK.Location = new System.Drawing.Point(124, 284);
-            this.cboTenLK.Name = "cboTenLK";
-            this.cboTenLK.Size = new System.Drawing.Size(173, 21);
-            this.cboTenLK.TabIndex = 49;
             // 
             // aaa
             // 
@@ -349,6 +339,13 @@
             this.lblTongTien.TabIndex = 56;
             this.lblTongTien.Text = "Tổng tiền";
             // 
+            // txtTenLinhKien
+            // 
+            this.txtTenLinhKien.Location = new System.Drawing.Point(123, 284);
+            this.txtTenLinhKien.Name = "txtTenLinhKien";
+            this.txtTenLinhKien.Size = new System.Drawing.Size(174, 20);
+            this.txtTenLinhKien.TabIndex = 59;
+            // 
             // fXuatKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -381,7 +378,6 @@
         private System.Windows.Forms.ComboBox cboMaLK;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cboTenLK;
         private System.Windows.Forms.Label aaa;
         private System.Windows.Forms.NumericUpDown nmrSoLuong;
         private System.Windows.Forms.Label label5;
@@ -404,5 +400,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtTongTien;
         private System.Windows.Forms.Label lblTongTien;
+        private System.Windows.Forms.TextBox txtTenLinhKien;
     }
 }
