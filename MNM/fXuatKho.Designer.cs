@@ -285,6 +285,7 @@
             this.dgvPhieuXuat.AllowUserToAddRows = false;
             this.dgvPhieuXuat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPhieuXuat.Location = new System.Drawing.Point(14, 19);
+            this.dgvPhieuXuat.MultiSelect = false;
             this.dgvPhieuXuat.Name = "dgvPhieuXuat";
             this.dgvPhieuXuat.ReadOnly = true;
             this.dgvPhieuXuat.RowHeadersVisible = false;
