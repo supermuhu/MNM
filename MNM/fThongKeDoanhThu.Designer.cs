@@ -183,7 +183,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(788, 535);
+            this.textBox2.Location = new System.Drawing.Point(801, 535);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(100, 20);
@@ -201,7 +201,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(478, 539);
+            this.label7.Location = new System.Drawing.Point(491, 539);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(110, 13);
             this.label7.TabIndex = 38;
@@ -210,7 +210,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvhangxuat);
-            this.groupBox1.Location = new System.Drawing.Point(480, 217);
+            this.groupBox1.Location = new System.Drawing.Point(493, 217);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(408, 264);
             this.groupBox1.TabIndex = 34;
@@ -256,7 +256,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(478, 507);
+            this.label9.Location = new System.Drawing.Point(491, 507);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(126, 13);
             this.label9.TabIndex = 42;
@@ -264,7 +264,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(788, 504);
+            this.textBox4.Location = new System.Drawing.Point(801, 504);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(100, 20);
@@ -286,7 +286,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fThongKeDoanhThu";
             this.Size = new System.Drawing.Size(933, 598);
             this.Load += new System.EventHandler(this.fThongKeDoanhThu_Load);
