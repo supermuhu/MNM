@@ -66,7 +66,9 @@ namespace MNM2
                             {
                                 Form1 f = new Form1(Username);
                                 this.Hide();
-                                f.ShowDialog();
+                               // f.ShowDialog();
+                               if(f.ShowDialog()==DialogResult.Cancel)
+                                        this.Close();
                             }
                             else
                             {
