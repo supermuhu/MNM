@@ -79,6 +79,7 @@ namespace MNM2
                         else
                         {
                             MessageBox.Show("Tài khoản không tồn tại");
+                            txtUsername.Clear();
                             txtUsername.Focus();
                         }
                     

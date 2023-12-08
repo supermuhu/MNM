@@ -27,12 +27,8 @@ namespace MNM2
             InitializeComponent();
             Username = User;
         }
-
-
         private string ntk;
         private string nmk;
-
-
         public class PasswordHasher
         {
             public static string HashPassword(string password)
@@ -43,14 +39,6 @@ namespace MNM2
             public static bool VerifyPassword(string password, string hashedPassword)
             {
                 return BCrypt.Net.BCrypt.Verify(password, hashedPassword);
-            }
-        }
-
-        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == ' ')
-            {
-                e.Handled = true;
             }
         }
 
@@ -217,6 +205,13 @@ namespace MNM2
         private void fDoiMK_Load(object sender, EventArgs e)
         {
             dgvTaiKhoan_Load();
+            if(Username != "admin")
+            {
+                foreach (Control control in groupBox2.Controls)
+                {
+                    control.Enabled = false;
+                }
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -248,6 +243,12 @@ namespace MNM2
 
         }
 
-
+        private void txtNewUser_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == ' ')
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

@@ -34,7 +34,6 @@ namespace MNM2
             Username = User;
         }
 
-
         private void btnKhachhang_Click(object sender, EventArgs e)
         {
             showControl(kh);
@@ -193,19 +192,9 @@ namespace MNM2
             dmk.Show();
         }
 
-        private void panelControl_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult = DialogResult.Cancel;
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

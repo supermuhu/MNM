@@ -269,16 +269,16 @@ namespace MNM2
             if (dateTao.Checked)
             {
                 if (query == "select * from khachhang where ")
-                    query += "ngaytao like @tao ";
+                    query += "ngaytao = @tao ";
                 else
-                    query += "and ngaytao like @tao ";
+                    query += "and ngaytao = @tao ";
             }
             if (dateCapNhat.Checked)
             {
                 if (query == "select * from khachhang where ")
-                    query += "ngaycapnhat like @capnhat ";
+                    query += "ngaycapnhat = @capnhat ";
                 else
-                    query += "and ngaycapnhat like @capnhat ";
+                    query += "and ngaycapnhat = @capnhat ";
             }
             if(query == "select * from khachhang where ")
             {
@@ -292,8 +292,8 @@ namespace MNM2
                 new SqlParameter("@email", "%" + tkEmail.Text + "%"),
                 new SqlParameter("@diachi", "%" + tkDiaChi.Text + "%"),
                 new SqlParameter("@dt", "%" + tkSDT.Text + "%"),
-                new SqlParameter("@tao", "%" + tkDateTao.Value.ToString("yyyy-MM-dd") + "%"),
-                new SqlParameter("@capnhat", "%" + tkDateCapNhat.Value.ToString("yyyy-MM-dd") + "%")
+                new SqlParameter("@tao", tkDateTao.Value.ToString("yyyy-MM-dd")),
+                new SqlParameter("@capnhat", tkDateCapNhat.Value.ToString("yyyy-MM-dd"))
             };
             //MessageBox.Show(query);
             dgvKhachHang.DataSource = Data.GetData(query, args);
