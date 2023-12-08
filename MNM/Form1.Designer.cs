@@ -147,7 +147,6 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(175, 513);
             this.flowLayoutPanel1.TabIndex = 12;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // btnChangePass
             // 
@@ -390,7 +389,6 @@
             this.panelControl.Name = "panelControl";
             this.panelControl.Size = new System.Drawing.Size(969, 630);
             this.panelControl.TabIndex = 9;
-            this.panelControl.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl_Paint);
             // 
             // Form1
             // 
@@ -415,7 +413,6 @@
             this.ResumeLayout(false);
 
         }
-
         #endregion
         private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.Button btnClose;
