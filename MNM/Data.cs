@@ -11,7 +11,7 @@ namespace MNM2
 {
     public class Data
     {
-        private static String strCon = @"Data Source=DESKTOP-94CKP3D\KHAI;Initial Catalog=LKMT;Integrated Security=True";
+        private static String strCon = @"Data Source=.\sqlexpress;Initial Catalog=LKMT;Integrated Security=True";
         public static DataTable GetData(String query, params SqlParameter[] args)
         {
             try

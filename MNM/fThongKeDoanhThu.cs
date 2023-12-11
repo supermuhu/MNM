@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Data.SqlClient;
+using System.Globalization;
+
 namespace MNM2
 {
     public partial class fThongKeDoanhThu : UserControl
@@ -27,10 +29,10 @@ namespace MNM2
         {
             dgvNhap.DataSource = Data.GetData(query,
                 new SqlParameter("@tu", dateTime_Tu.Value.ToString("yyyy-MM-dd")),
-                new SqlParameter("@den", dateTime_Den.Value.ToString("yyyy-MM-dd")));
+                new SqlParameter("@den", dateTime_Den.Value.ToString("yyyy-MM-dd") + " 23:59:59.999"));
             dgvNhap.Columns[0].HeaderText = "Tên linh kiện";
             dgvNhap.Columns[1].HeaderText = "Số lượng";
-            dgvNhap.Columns[2].HeaderText = "Tổng tiền";
+            dgvNhap.Columns[2].HeaderText = "Thành tiền";
             dgvNhap.Columns[3].HeaderText = "Ngày nhập";
             dgvNhap.Columns[0].Width = 124;
             dgvNhap.Columns[1].Width = 75;
@@ -41,10 +43,10 @@ namespace MNM2
         {
             dgvXuat.DataSource = Data.GetData(query,
                 new SqlParameter("@tu", dateTime_Tu.Value.ToString("yyyy-MM-dd")),
-                new SqlParameter("@den", dateTime_Den.Value.ToString("yyyy-MM-dd")));
+                new SqlParameter("@den", dateTime_Den.Value.ToString("yyyy-MM-dd") + " 23:59:59.999"));
             dgvXuat.Columns[0].HeaderText = "Tên linh kiện";
             dgvXuat.Columns[1].HeaderText = "Số lượng";
-            dgvXuat.Columns[2].HeaderText = "Tổng tiền";
+            dgvXuat.Columns[2].HeaderText = "Thành tiền";
             dgvXuat.Columns[3].HeaderText = "Ngày xuất";
             dgvXuat.Columns[0].Width = 124;
             dgvXuat.Columns[1].Width = 75;
@@ -82,9 +84,12 @@ namespace MNM2
                 d += Convert.ToDecimal(dgvXuat.Rows[j].Cells[2].Value.ToString());
 
             }
-            txtTienXuat.Text = d.ToString();
-            txtTienNhap.Text = c.ToString();
-            txtTongTien.Text = (d - c).ToString();
+            var culture = new CultureInfo("en-US");
+            culture.NumberFormat.NumberDecimalSeparator = ",";
+            culture.NumberFormat.NumberGroupSeparator = ".";
+            txtTienXuat.Text = d.ToString("N", culture) + " VNĐ";
+            txtTienNhap.Text = c.ToString("N", culture) + " VNĐ";
+            txtTongTien.Text = (d - c).ToString("N", culture) + " VNĐ";
         }
         private void fThongKeDoanhThu_Load(object sender, EventArgs e)
         {
@@ -99,7 +104,7 @@ namespace MNM2
         private void dateTime_Tu_ValueChanged(object sender, EventArgs e)
         {
             dateTime_Den.MinDate = dateTime_Tu.Value;
-            String query = "select tensanpham, soluongsp, tongtien, ngaynhap from chitietphieunhap " +
+            String query = "select tensanpham, soluongsp, thanhtien, ngaynhap from chitietphieunhap " +
                 "join phieunhap on chitietphieunhap.id_phieunhap = phieunhap.id_phieunhap " +
                 "join sanpham on sanpham.id_sanpham = chitietphieunhap.id_sanpham " +
                 "where ngaynhap >= @tu and ngaynhap <= @den";
