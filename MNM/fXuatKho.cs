@@ -68,7 +68,7 @@ namespace MNM2
 
         private void dgvPhieuXuat_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvPhieuXuat.Rows.Count == 0) return;
+            if (dgvPhieuXuat.Rows.Count == .0) return;
             foreach (Control control in groupBox2.Controls)
             {
                 control.Enabled = false;
@@ -184,8 +184,10 @@ namespace MNM2
                         cboPhieuXuat.DataSource = null;
                         cboPhieuXuat.DisplayMember = "id_phieuxuat";
                         cboPhieuXuat.ValueMember = "id_phieuxuat";
-                        cboPhieuXuat.DataSource = Data.GetData(querry);
-                        cboPhieuXuat.SelectedIndex = cboPhieuXuat.Items.Count - 1;
+                        DataTable dt = Data.GetData(querry);
+                        dt.Rows.Add("-1");
+                        cboPhieuXuat.DataSource = dt;
+                        cboPhieuXuat.SelectedIndex = cboPhieuXuat.Items.Count - 2;
                         querry = "select gia from sanpham where id_sanpham = @Value1";
                         decimal tien = 0;
                         using (SqlConnection conn = new SqlConnection(Data.GetStringConnection()))
@@ -214,7 +216,7 @@ namespace MNM2
                             new SqlParameter("@Value4", tien)
                         };
                         ex = Data.Excute(querry, p1);
-                        querry = "select phieuxuat.id_phieuxuat, ten, tenthanhtoan, ngaydathang, chitietphieuxuat.id_sanpham, tensanpham, soluongsp from phieuxuat inner join chitietphieuxuat on phieuxuat.id_phieuxuat = chitietphieuxuat.id_phieuxuat inner join phuongthucthanhtoan on phieuxuat.id_thanhtoan = phuongthucthanhtoan.id_thanhtoan inner join sanpham on chitietphieuxuat.id_sanpham = sanpham.id_sanpham inner join khachhang on khachhang.id_khachhang = phieuxuat.id_khachhang where phieuxuat.id_phieuxuat = @Value1";
+                        querry = "select ngaydathang, chitietphieuxuat.id_sanpham, tensanpham, soluongsp from phieuxuat inner join chitietphieuxuat on phieuxuat.id_phieuxuat = chitietphieuxuat.id_phieuxuat inner join phuongthucthanhtoan on phieuxuat.id_thanhtoan = phuongthucthanhtoan.id_thanhtoan inner join sanpham on chitietphieuxuat.id_sanpham = sanpham.id_sanpham inner join khachhang on khachhang.id_khachhang = phieuxuat.id_khachhang where phieuxuat.id_phieuxuat = @Value1";
                         SqlParameter p2 = new SqlParameter("@Value1", cboPhieuXuat.SelectedValue);
                         dgvPhieuXuat.DataSource = Data.GetData(querry, p2);
                     }

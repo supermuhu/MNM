@@ -76,18 +76,6 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.openImage = new System.Windows.Forms.OpenFileDialog();
-            this.soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ngaycapnhat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ngaytao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.khuyenmai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.baohanh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenlinhkien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_thuonghieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_linhkien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -182,19 +170,6 @@
             // 
             this.dgvSanPham.AllowUserToAddRows = false;
             this.dgvSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSanPham.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_linhkien,
-            this.id_thuonghieu,
-            this.tenlinhkien,
-            this.id_loai,
-            this.gia,
-            this.baohanh,
-            this.khuyenmai,
-            this.hinh,
-            this.mota,
-            this.ngaytao,
-            this.ngaycapnhat,
-            this.soluong});
             this.dgvSanPham.Location = new System.Drawing.Point(6, 19);
             this.dgvSanPham.MultiSelect = false;
             this.dgvSanPham.Name = "dgvSanPham";
@@ -569,98 +544,6 @@
             // 
             this.openImage.FileName = "openFileDialog3";
             // 
-            // soluong
-            // 
-            this.soluong.DataPropertyName = "soluong";
-            this.soluong.HeaderText = "Số lượng";
-            this.soluong.Name = "soluong";
-            this.soluong.ReadOnly = true;
-            this.soluong.Width = 50;
-            // 
-            // ngaycapnhat
-            // 
-            this.ngaycapnhat.DataPropertyName = "ngaycapnhat";
-            this.ngaycapnhat.HeaderText = "Ngày cập nhật";
-            this.ngaycapnhat.Name = "ngaycapnhat";
-            this.ngaycapnhat.ReadOnly = true;
-            // 
-            // ngaytao
-            // 
-            this.ngaytao.DataPropertyName = "ngaytao";
-            this.ngaytao.HeaderText = "Ngày tạo";
-            this.ngaytao.Name = "ngaytao";
-            this.ngaytao.ReadOnly = true;
-            // 
-            // mota
-            // 
-            this.mota.DataPropertyName = "mota";
-            this.mota.HeaderText = "Mô tả";
-            this.mota.Name = "mota";
-            this.mota.ReadOnly = true;
-            this.mota.Width = 70;
-            // 
-            // hinh
-            // 
-            this.hinh.DataPropertyName = "hinh";
-            this.hinh.HeaderText = "Hình";
-            this.hinh.Name = "hinh";
-            this.hinh.ReadOnly = true;
-            this.hinh.Visible = false;
-            // 
-            // khuyenmai
-            // 
-            this.khuyenmai.DataPropertyName = "khuyenmai";
-            this.khuyenmai.HeaderText = "Khuyến mại";
-            this.khuyenmai.Name = "khuyenmai";
-            this.khuyenmai.ReadOnly = true;
-            this.khuyenmai.Width = 50;
-            // 
-            // baohanh
-            // 
-            this.baohanh.DataPropertyName = "baohanh";
-            this.baohanh.HeaderText = "Bảo hành";
-            this.baohanh.Name = "baohanh";
-            this.baohanh.ReadOnly = true;
-            this.baohanh.Width = 50;
-            // 
-            // gia
-            // 
-            this.gia.DataPropertyName = "gia";
-            this.gia.HeaderText = "Giá";
-            this.gia.Name = "gia";
-            this.gia.ReadOnly = true;
-            // 
-            // id_loai
-            // 
-            this.id_loai.DataPropertyName = "id_loai";
-            this.id_loai.HeaderText = "Mã loại";
-            this.id_loai.Name = "id_loai";
-            this.id_loai.ReadOnly = true;
-            this.id_loai.Visible = false;
-            // 
-            // tenlinhkien
-            // 
-            this.tenlinhkien.DataPropertyName = "tensanpham";
-            this.tenlinhkien.HeaderText = "Tên linh kiện";
-            this.tenlinhkien.Name = "tenlinhkien";
-            this.tenlinhkien.ReadOnly = true;
-            this.tenlinhkien.Width = 156;
-            // 
-            // id_thuonghieu
-            // 
-            this.id_thuonghieu.DataPropertyName = "id_thuonghieu";
-            this.id_thuonghieu.HeaderText = "Mã thương hiệu";
-            this.id_thuonghieu.Name = "id_thuonghieu";
-            this.id_thuonghieu.ReadOnly = true;
-            this.id_thuonghieu.Width = 110;
-            // 
-            // id_linhkien
-            // 
-            this.id_linhkien.DataPropertyName = "id_sanpham";
-            this.id_linhkien.HeaderText = "Mã linh kiện";
-            this.id_linhkien.Name = "id_linhkien";
-            this.id_linhkien.ReadOnly = true;
-            // 
             // fSanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -743,17 +626,5 @@
         private System.Windows.Forms.NumericUpDown nmrSoluong;
         private System.Windows.Forms.OpenFileDialog openImage;
         private System.Windows.Forms.TextBox richMoTa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_linhkien;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_thuonghieu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tenlinhkien;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_loai;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn baohanh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn khuyenmai;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mota;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ngaytao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ngaycapnhat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn soluong;
     }
 }
