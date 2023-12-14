@@ -107,7 +107,7 @@ namespace MNM2
             cbox_Xuatkho_Thanhtoan.DataSource = Data.GetData("select * from phuongthucthanhtoan");
             if (cboMaLK.SelectedValue != null) cboMaLK.SelectedIndex = 0;
             txtNgayXuat.Clear();
-            txtTongTien.Clear();
+            //txtTongTien.Clear();
             nmrSoLuong.Value = 1;
 
             btnXuatKho.Enabled = true;

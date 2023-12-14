@@ -88,6 +88,7 @@
             this.cboMaLK.Name = "cboMaLK";
             this.cboMaLK.Size = new System.Drawing.Size(173, 21);
             this.cboMaLK.TabIndex = 46;
+            this.cboMaLK.SelectedIndexChanged += new System.EventHandler(this.cboMaLK_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -123,9 +124,24 @@
             // nmrSoLuong
             // 
             this.nmrSoLuong.Location = new System.Drawing.Point(124, 202);
+            this.nmrSoLuong.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nmrSoLuong.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nmrSoLuong.Name = "nmrSoLuong";
             this.nmrSoLuong.Size = new System.Drawing.Size(45, 20);
             this.nmrSoLuong.TabIndex = 43;
+            this.nmrSoLuong.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label7
             // 
@@ -144,6 +160,7 @@
             this.txtGiaNhap.Name = "txtGiaNhap";
             this.txtGiaNhap.Size = new System.Drawing.Size(111, 20);
             this.txtGiaNhap.TabIndex = 41;
+            this.txtGiaNhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaNhap_KeyPress);
             // 
             // label5
             // 
@@ -164,6 +181,7 @@
             this.btnLamMoi.TabIndex = 43;
             this.btnLamMoi.Text = "Làm mới";
             this.btnLamMoi.UseVisualStyleBackColor = true;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // groupBox1
             // 
@@ -184,6 +202,7 @@
             this.btnNhapKho.TabIndex = 7;
             this.btnNhapKho.Text = "Nhập kho";
             this.btnNhapKho.UseVisualStyleBackColor = true;
+            this.btnNhapKho.Click += new System.EventHandler(this.btnNhapKho_Click);
             // 
             // dgvPhieuNhap
             // 
@@ -197,6 +216,7 @@
             this.dgvPhieuNhap.RowHeadersWidth = 51;
             this.dgvPhieuNhap.Size = new System.Drawing.Size(544, 388);
             this.dgvPhieuNhap.TabIndex = 22;
+            this.dgvPhieuNhap.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhieuNhap_CellClick);
             // 
             // groupBox3
             // 
@@ -292,6 +312,7 @@
             this.cboPhieuNhap.Name = "cboPhieuNhap";
             this.cboPhieuNhap.Size = new System.Drawing.Size(173, 21);
             this.cboPhieuNhap.TabIndex = 50;
+            this.cboPhieuNhap.SelectedIndexChanged += new System.EventHandler(this.cboPhieuNhap_SelectedIndexChanged);
             // 
             // txtTongTien
             // 
@@ -324,6 +345,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fNhapKho";
             this.Size = new System.Drawing.Size(968, 665);
+            this.Load += new System.EventHandler(this.fNhapKho_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nmrSoLuong)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhieuNhap)).EndInit();
