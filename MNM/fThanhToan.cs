@@ -54,8 +54,7 @@ namespace MNM2
         {
             if (!String.IsNullOrEmpty(txtID.Text))
             {
-                MessageBox.Show("Trùng mã phương thức");
-                txtID.Focus();
+                MessageBox.Show("Đang chọn 1 phương thức");
                 return;
             }
             if (String.IsNullOrEmpty(txtName.Text))
@@ -64,7 +63,7 @@ namespace MNM2
                 txtName.Focus();
                 return;
             }
-            if (Data.Excute("insert into phuongthucthanhtoan values (@ten)", new SqlParameter("@ten", txtName.Text)))
+            if (Data.Excute("insert into phuongthucthanhtoan values (@ten)", new SqlParameter("@ten", txtName.Text.Trim())))
             {
                 emptyText();
                 dgvPhuongthuc_Load();

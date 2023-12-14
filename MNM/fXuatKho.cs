@@ -258,7 +258,7 @@ namespace MNM2
                                 new SqlParameter("@Value4", tien)
                             };
                             bool ex = Data.Excute(querry, p);
-                            querry = "select phieuxuat.id_phieuxuat, ten, tenthanhtoan, ngaydathang, chitietphieuxuat.id_sanpham, tensanpham, soluongsp from phieuxuat inner join chitietphieuxuat on phieuxuat.id_phieuxuat = chitietphieuxuat.id_phieuxuat inner join phuongthucthanhtoan on phieuxuat.id_thanhtoan = phuongthucthanhtoan.id_thanhtoan inner join sanpham on chitietphieuxuat.id_sanpham = sanpham.id_sanpham inner join khachhang on khachhang.id_khachhang = phieuxuat.id_khachhang where phieuxuat.id_phieuxuat = @Value1";
+                            querry = "select ngaydathang, chitietphieuxuat.id_sanpham, tensanpham, soluongsp from phieuxuat inner join chitietphieuxuat on phieuxuat.id_phieuxuat = chitietphieuxuat.id_phieuxuat inner join phuongthucthanhtoan on phieuxuat.id_thanhtoan = phuongthucthanhtoan.id_thanhtoan inner join sanpham on chitietphieuxuat.id_sanpham = sanpham.id_sanpham inner join khachhang on khachhang.id_khachhang = phieuxuat.id_khachhang where phieuxuat.id_phieuxuat = @Value1";
                             SqlParameter p2 = new SqlParameter("@Value1", cboPhieuXuat.SelectedValue);
                             dgvPhieuXuat.DataSource = Data.GetData(querry, p2);
                         }

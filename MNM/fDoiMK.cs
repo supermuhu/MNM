@@ -44,19 +44,19 @@ namespace MNM2
 
         private void btnXacNhan_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtOldPass.Text))
+            if (String.IsNullOrEmpty(txtOldPass.Text.Trim()))
             {
                 MessageBox.Show("Chưa nhập mật khẩu cũ");
                 txtOldPass.Focus();
                 return;
             }
-            if (String.IsNullOrEmpty(txtNewPass1.Text))
+            if (String.IsNullOrEmpty(txtNewPass1.Text.Trim()))
             {
                 MessageBox.Show("Chưa nhập mật khẩu mới");
                 txtNewPass1.Focus();
                 return;
             }
-            if (String.IsNullOrEmpty(txtNewPass2.Text))
+            if (String.IsNullOrEmpty(txtNewPass2.Text.Trim()))
             {
                 MessageBox.Show("Chưa nhập lại mật khẩu mới");
                 txtNewPass2.Focus();
@@ -77,12 +77,12 @@ namespace MNM2
                         if (reader.Read())
                         {
                             string storedHashedPassword = reader["pass"].ToString();
-                            bool verifyPassword = PasswordHasher.VerifyPassword(txtOldPass.Text, storedHashedPassword);
-                            if (txtNewPass1.Text == txtNewPass2.Text)
+                            bool verifyPassword = PasswordHasher.VerifyPassword(txtOldPass.Text.Trim(), storedHashedPassword);
+                            if (txtNewPass1.Text.Trim() == txtNewPass2.Text.Trim())
                             {
                                 if (verifyPassword)
                                 {
-                                    string newHashedPassword = PasswordHasher.HashPassword(txtNewPass1.Text);
+                                    string newHashedPassword = PasswordHasher.HashPassword(txtNewPass1.Text.Trim());
                                     if (PasswordHasher.VerifyPassword(txtNewPass1.Text, storedHashedPassword))
                                     {
                                         MessageBox.Show("Trùng với mật khẩu gốc");
@@ -147,26 +147,26 @@ namespace MNM2
                 txtNewUser.Clear();
                 return;
             }
-            if (String.IsNullOrEmpty(txtNewUser.Text))
+            if (String.IsNullOrEmpty(txtNewUser.Text.Trim()))
             {
                 MessageBox.Show("Chưa nhập tài khoản mới");
                 txtNewUser.Focus();
                 return;
             }
-            if (String.IsNullOrEmpty(txtNewPassUser1.Text))
+            if (String.IsNullOrEmpty(txtNewPassUser1.Text.Trim()))
             {
                 MessageBox.Show("Chưa nhập mật khẩu mới");
                 txtNewPassUser1.Focus();
                 return;
             }
-            if (String.IsNullOrEmpty(txtNewPassUser2.Text))
+            if (String.IsNullOrEmpty(txtNewPassUser2.Text.Trim()))
             {
                 MessageBox.Show("Chưa nhập lại mật khẩu mới");
                 txtNewPassUser2.Focus();
                 return;
             }
-            nmk = txtNewPassUser1.Text;
-            if(nmk == txtNewPassUser2.Text)
+            nmk = txtNewPassUser1.Text.Trim();
+            if(nmk == txtNewPassUser2.Text.Trim())
             {
                 string hashedPassword = PasswordHasher.HashPassword(nmk);
 

@@ -150,7 +150,7 @@ namespace MNM2
                 MessageBox.Show("Chưa có loại linh kiện");
                 return;
             }
-            if (String.IsNullOrEmpty(txtTenLinhKien.Text))
+            if (String.IsNullOrEmpty(txtTenLinhKien.Text.Trim()))
             {
                 MessageBox.Show("Chưa có tên linh kiện");
                 txtTenLinhKien.Focus();
@@ -171,8 +171,8 @@ namespace MNM2
             {
                 btnChonHinh_Click(sender, e);
             }
-            if (txtMaLinhKien.Text == Data.Scalar("select * from sanpham where id_sanpham = @id",
-                new SqlParameter("@id", txtMaLinhKien.Text)))
+            if (txtMaLinhKien.Text.Trim() == Data.Scalar("select * from sanpham where id_sanpham = @id",
+                new SqlParameter("@id", txtMaLinhKien.Text.Trim())))
             {
                 MessageBox.Show("Trùng mã linh kiện");
                 return;
@@ -181,15 +181,15 @@ namespace MNM2
                 "@hinh, @mota, @ngaytao, @ngaycapnhat, @sl)";
             SqlParameter[] args =
             {
-                new SqlParameter("@sp", txtMaLinhKien.Text),
+                new SqlParameter("@sp", txtMaLinhKien.Text.Trim()),
                 new SqlParameter("@th", cboThuongHieu.SelectedValue),
-                new SqlParameter("@ten", txtTenLinhKien.Text),
+                new SqlParameter("@ten", txtTenLinhKien.Text.Trim()),
                 new SqlParameter("@loai", cboLoaiLK.SelectedValue),
                 new SqlParameter("@gia", txtGia.Text),
                 new SqlParameter("@baohanh", nmrBaoHanh.Value),
                 new SqlParameter("@khuyenmai", nmrKhuyenMai.Value),
                 new SqlParameter("@hinh", linkImage),
-                new SqlParameter("@mota", String.IsNullOrEmpty(richMoTa.Text) ? "Còn mới" : richMoTa.Text),
+                new SqlParameter("@mota", String.IsNullOrEmpty(richMoTa.Text.Trim()) ? "Còn mới" : richMoTa.Text.Trim()),
                 new SqlParameter("@ngaytao", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")),
                 new SqlParameter("@ngaycapnhat", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")),
                 new SqlParameter("@sl", nmrSoluong.Value)
@@ -296,7 +296,7 @@ namespace MNM2
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            DialogResult a = MessageBox.Show("Bạn chắc chắn muốn xoá sản linh kiện", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult a = MessageBox.Show("Bạn chắc chắn muốn xoá linh kiện", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (a == DialogResult.No)
             {
                 return;

@@ -69,7 +69,7 @@ namespace MNM2
                 MessageBox.Show("Chưa có nhóm linh kiện");
                 return;
             }
-            if(String.IsNullOrEmpty(txtTenThuongHieu.Text))
+            if(String.IsNullOrEmpty(txtTenThuongHieu.Text.Trim()))
             {
                 MessageBox.Show("Chưa có tên thương hiệu");
                 txtTenThuongHieu.Focus();
@@ -79,7 +79,7 @@ namespace MNM2
             SqlParameter[] args =
             {
                 new SqlParameter("@id", cboNhomLK.SelectedValue),
-                new SqlParameter("@ten", txtTenThuongHieu.Text),
+                new SqlParameter("@ten", txtTenThuongHieu.Text.Trim()),
                 new SqlParameter("@ngaytao", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")),
                 new SqlParameter("@ngaycapnhat", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"))
             };
@@ -97,7 +97,7 @@ namespace MNM2
                 MessageBox.Show("Chưa có nhóm linh kiện");
                 return;
             }
-            if (txtTenThuongHieu.Text == "")
+            if (txtTenThuongHieu.Text.Trim() == "")
             {
                 MessageBox.Show("Chưa có tên thương hiệu");
                 txtTenThuongHieu.Focus();
@@ -111,7 +111,7 @@ namespace MNM2
             SqlParameter[] args =
             {
                 new SqlParameter("@id_nhom", cboNhomLK.SelectedValue),
-                new SqlParameter("@ten", txtTenThuongHieu.Text),
+                new SqlParameter("@ten", txtTenThuongHieu.Text.Trim()),
                 new SqlParameter("@ngaycapnhat", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")),
                 new SqlParameter("@id", txtMaTH.Text)
             };

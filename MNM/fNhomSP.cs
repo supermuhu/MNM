@@ -52,20 +52,20 @@ namespace MNM2
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtID.Text))
+            if (String.IsNullOrEmpty(txtID.Text.Trim()))
             {
                 MessageBox.Show("Chưa có mã nhóm linh kiện");
                 txtID.Focus();
                 return;
             }
-            if (String.IsNullOrEmpty(txtName.Text))
+            if (String.IsNullOrEmpty(txtName.Text.Trim()))
             {
                 MessageBox.Show("Chưa có tên nhóm linh kiện");
                 txtName.Focus();
                 return;
             }
             if (txtID.Text == Data.Scalar("select * from nhomsanpham where id_nhom = @id",
-                new SqlParameter("@id", txtID.Text)))
+                new SqlParameter("@id", txtID.Text.Trim())))
             {
                 MessageBox.Show("Trùng mã nhóm linh kiện");
                 txtID.Focus();
@@ -74,8 +74,8 @@ namespace MNM2
             String query = "insert into nhomsanpham values (@id, @ten, @ngaytao, @ngaycapnhat)";
             SqlParameter[] args =
             {
-                new SqlParameter("@id", txtID.Text),
-                new SqlParameter("@ten", txtName.Text),
+                new SqlParameter("@id", txtID.Text.Trim()),
+                new SqlParameter("@ten", txtName.Text.Trim()),
                 new SqlParameter("@ngaytao", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")),
                 new SqlParameter("@ngaycapnhat", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"))
             };
@@ -93,7 +93,7 @@ namespace MNM2
                 MessageBox.Show("Chưa chọn nhóm để sửa");
                 return;
             }
-            if (String.IsNullOrEmpty(txtName.Text))
+            if (String.IsNullOrEmpty(txtName.Text.Trim()))
             {
                 MessageBox.Show("Chưa có tên nhóm linh kiện");
                 txtName.Focus();
@@ -105,8 +105,8 @@ namespace MNM2
                 "where id_nhom = @id";
             SqlParameter[] args =
             {
-                new SqlParameter("@id", txtID.Text),
-                new SqlParameter("@ten", txtName.Text),
+                new SqlParameter("@id", txtID.Text.Trim()),
+                new SqlParameter("@ten", txtName.Text.Trim()),
                 new SqlParameter("@ngaycapnhat", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"))
             };
             if (Data.Excute(query, args))

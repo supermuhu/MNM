@@ -20,7 +20,6 @@ namespace MNM2
         }
         private void emptyText()
         {
-            cboNhomLK.SelectedIndex = 0;
             txtMaLoai.Text = "";
             txtTenLoai.Text = "";
             txtNgayTao.Text = "";
@@ -69,26 +68,27 @@ namespace MNM2
 
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
+            cboNhomLK.SelectedIndex = 0;
             emptyText();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
 
-            if (String.IsNullOrEmpty(txtMaLoai.Text))
+            if (String.IsNullOrEmpty(txtMaLoai.Text.Trim()))
             {
                 MessageBox.Show("Chưa có mã loại linh kiện");
                 txtMaLoai.Focus();
                 return;
             }
-            if (String.IsNullOrEmpty(txtTenLoai.Text))
+            if (String.IsNullOrEmpty(txtTenLoai.Text.Trim()))
             {
                 MessageBox.Show("Chưa có tên nhóm linh kiện");
                 txtTenLoai.Focus();
                 return;
             }
-            if (txtMaLoai.Text == Data.Scalar("select * from loaisanpham where id_loai = @id",
-                new SqlParameter("@id", txtMaLoai.Text)))
+            if (txtMaLoai.Text.Trim() == Data.Scalar("select * from loaisanpham where id_loai = @id",
+                new SqlParameter("@id", txtMaLoai.Text.Trim())))
             {
                 MessageBox.Show("Trùng mã loại linh kiện");
                 txtMaLoai.Focus();
@@ -97,9 +97,9 @@ namespace MNM2
             String query = "insert into loaisanpham values (@id, @nhom, @ten, @ngaytao, @ngaycapnhat)";
             SqlParameter[] args =
             {
-                new SqlParameter("@id", txtMaLoai.Text),
+                new SqlParameter("@id", txtMaLoai.Text.Trim()),
                 new SqlParameter("@nhom", cboNhomLK.SelectedValue),
-                new SqlParameter("@ten", txtTenLoai.Text),
+                new SqlParameter("@ten", txtTenLoai.Text.Trim()),
                 new SqlParameter("@ngaytao", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")),
                 new SqlParameter("@ngaycapnhat", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"))
             };
@@ -112,6 +112,11 @@ namespace MNM2
 
         private void cboNhomLK_SelectedIndexChanged(object sender, EventArgs e)
         {
+            txtMaLoai.Text = "";
+            txtTenLoai.Text = "";
+            txtNgayTao.Text = "";
+            txtCapNhat.Text = "";
+            txtMaLoai.ReadOnly = false;
             dgvLoaiSP_Load();
         }
 
@@ -122,7 +127,7 @@ namespace MNM2
                 MessageBox.Show("Chưa chọn loại linh kiện nào để sửa");
                 return;
             }
-            if (String.IsNullOrEmpty(txtTenLoai.Text))
+            if (String.IsNullOrEmpty(txtTenLoai.Text.Trim()))
             {
                 MessageBox.Show("Chưa có tên nhóm linh kiện");
                 txtTenLoai.Focus();
@@ -135,9 +140,9 @@ namespace MNM2
                 "where id_loai = @id";
             SqlParameter[] args =
             {
-                new SqlParameter("@id", txtMaLoai.Text),
+                new SqlParameter("@id", txtMaLoai.Text.Trim()),
                 new SqlParameter("@nhom", cboNhomLK.SelectedValue),
-                new SqlParameter("@ten", txtTenLoai.Text),
+                new SqlParameter("@ten", txtTenLoai.Text.Trim()),
                 new SqlParameter("@ngaytao", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")),
                 new SqlParameter("@ngaycapnhat", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"))
             };

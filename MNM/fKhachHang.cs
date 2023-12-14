@@ -17,7 +17,6 @@ namespace MNM2
         {
             InitializeComponent();
         }
-
         private void chkboMa_CheckedChanged(object sender, EventArgs e)
         {
             if (chkboMa.Checked)
@@ -161,19 +160,55 @@ namespace MNM2
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtTenKH.Text))
+            if (!String.IsNullOrEmpty(txtMaKH.Text.Trim()))
+            {
+                MessageBox.Show("Đang chọn 1 khách hàng");
+                return;
+            }
+            if (String.IsNullOrEmpty(txtTenKH.Text.Trim()))
             {
                 MessageBox.Show("Chưa có tên khách hàng");
                 txtTenKH.Focus();
                 return;
             }
+            if (String.IsNullOrEmpty(txtEmail.Text.Trim()))
+            {
+                MessageBox.Show("Chưa có Email khách hàng");
+                txtEmail.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(txtDienThoai.Text.Trim()))
+            {
+                MessageBox.Show("Chưa có số điện thoại khách hàng");
+                txtDienThoai.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(txtDiaChi.Text.Trim()))
+            {
+                MessageBox.Show("Chưa có địa chỉ khách hàng");
+                txtDiaChi.Focus();
+                return;
+            }
+            if (!String.IsNullOrEmpty(Data.Scalar("select ten from khachhang where ten = @t",
+                new SqlParameter("@t", txtTenKH.Text.Trim()))))
+            {
+                for(int i = 1; ; i++)
+                {
+                    if(String.IsNullOrEmpty(Data.Scalar("select ten from khachhang where ten = @t",
+                        new SqlParameter("@t", txtTenKH.Text.Trim() + " (" + i.ToString() + ")"))))
+                    {
+                        txtTenKH.Text = txtTenKH.Text.Trim()  + " (" + i.ToString() + ")";
+                        break;
+                    }
+                }
+            }
             String query = "insert into khachhang values (@email, @ten, @sdt, @diachi, @ngaytao, @ngaycapnhat)";
             SqlParameter[] args =
             {
-                new SqlParameter("@email", txtEmail.Text),
-                new SqlParameter("@ten", txtTenKH.Text),
-                new SqlParameter("@sdt", txtDienThoai.Text),
-                new SqlParameter("@diachi", txtDiaChi.Text),
+                new SqlParameter("@email", txtEmail.Text.Trim()),
+                new SqlParameter("@ten", txtTenKH.Text.Trim()),
+                new SqlParameter("@sdt", txtDienThoai.Text.Trim()),
+                new SqlParameter("@diachi", txtDiaChi.Text.Trim()),
                 new SqlParameter("@ngaytao", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")),
                 new SqlParameter("@ngaycapnhat", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"))
             };
@@ -186,16 +221,51 @@ namespace MNM2
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtMaKH.Text))
+            if (String.IsNullOrEmpty(txtMaKH.Text.Trim()))
             {
                 MessageBox.Show("Chưa chọn khách hàng cần sửa");
                 return;
             }
-            if (String.IsNullOrEmpty(txtTenKH.Text))
+            if (String.IsNullOrEmpty(txtTenKH.Text.Trim()))
             {
                 MessageBox.Show("Chưa có tên khách hàng");
                 txtTenKH.Focus();
                 return;
+            }
+            if (String.IsNullOrEmpty(txtEmail.Text.Trim()))
+            {
+                MessageBox.Show("Chưa có Email khách hàng");
+                txtEmail.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(txtDienThoai.Text.Trim()))
+            {
+                MessageBox.Show("Chưa có số điện thoại khách hàng");
+                txtDienThoai.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(txtDiaChi.Text.Trim()))
+            {
+                MessageBox.Show("Chưa có địa chỉ khách hàng");
+                txtDiaChi.Focus();
+                return;
+            }
+            if (txtTenKH.Text.Contains("("))
+            {
+                txtTenKH.Text = txtTenKH.Text.Substring(0, txtTenKH.Text.IndexOf("(") - 1);
+            }
+            if (!String.IsNullOrEmpty(Data.Scalar("select ten from khachhang where ten = @t",
+                new SqlParameter("@t", txtTenKH.Text.Trim()))))
+            {
+                for (int i = 1; ; i++)
+                {
+                    if (String.IsNullOrEmpty(Data.Scalar("select ten from khachhang where ten = @t",
+                        new SqlParameter("@t", txtTenKH.Text.Trim() + " (" + i.ToString() + ")"))))
+                    {
+                        txtTenKH.Text = txtTenKH.Text.Trim() + " (" + i.ToString() + ")";
+                        break;
+                    }
+                }
             }
             String query = "update khachhang " +
                 "set email = @email," +
@@ -206,17 +276,30 @@ namespace MNM2
                 "where id_khachhang = @id";
             SqlParameter[] args =
             {
-                new SqlParameter("@email", txtEmail.Text),
-                new SqlParameter("@ten", txtTenKH.Text),
-                new SqlParameter("@sdt", txtDienThoai.Text),
-                new SqlParameter("@diachi", txtDiaChi.Text),
+                new SqlParameter("@email", txtEmail.Text.Trim()),
+                new SqlParameter("@ten", txtTenKH.Text.Trim()),
+                new SqlParameter("@sdt", txtDienThoai.Text.Trim()),
+                new SqlParameter("@diachi", txtDiaChi.Text.Trim()),
                 new SqlParameter("@ngaycapnhat", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")),
-                new SqlParameter("@id",txtMaKH.Text)
+                new SqlParameter("@id",txtMaKH.Text.Trim())
             };
             if (Data.Excute(query, args))
             {
                 emptyText();
                 dgvKhachHang_Load();
+            }
+            if (!String.IsNullOrEmpty(Data.Scalar("select ten from khachhang where ten = @t",
+                new SqlParameter("@t", txtTenKH.Text.Trim()))))
+            {
+                for (int i = 1; ; i++)
+                {
+                    if (String.IsNullOrEmpty(Data.Scalar("select ten from khachhang where ten = @t",
+                        new SqlParameter("@t", txtTenKH.Text.Trim() + " (" + i.ToString() + ")"))))
+                    {
+                        txtTenKH.Text = txtTenKH.Text.Trim() + " (" + i.ToString() + ")";
+                        break;
+                    }
+                }
             }
         }
 
@@ -231,35 +314,35 @@ namespace MNM2
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             String query = "select * from khachhang where ";
-            if (chkboMa.Checked && !String.IsNullOrEmpty(tkMa.Text))
+            if (chkboMa.Checked && !String.IsNullOrEmpty(tkMa.Text.Trim()))
             {
                 if (query == "select * from khachhang where ")
                     query += "id_khachhang like @id ";
                 else
                     query += "and id_khachhang like @id ";
             }
-            if (chkboTen.Checked && !String.IsNullOrEmpty(tkTen.Text))
+            if (chkboTen.Checked && !String.IsNullOrEmpty(tkTen.Text.Trim()))
             {
                 if (query == "select * from khachhang where ")
                     query += "ten like @ten ";
                 else
                     query += "and ten like @ten ";
             }
-            if (chkboEmail.Checked && !String.IsNullOrEmpty(tkEmail.Text))
+            if (chkboEmail.Checked && !String.IsNullOrEmpty(tkEmail.Text.Trim()))
             {
                 if (query == "select * from khachhang where ")
                     query += "email like @email ";
                 else
                     query += "and email like @email ";
             }
-            if (chkboDiaChi.Checked && !String.IsNullOrEmpty(tkDiaChi.Text))
+            if (chkboDiaChi.Checked && !String.IsNullOrEmpty(tkDiaChi.Text.Trim()))
             {
                 if (query == "select * from khachhang where ")
                     query += "diachi like @diachi ";
                 else
                     query += "and diachi like @diachi ";
             }
-            if (chkboSDT.Checked && !String.IsNullOrEmpty(tkSDT.Text))
+            if (chkboSDT.Checked && !String.IsNullOrEmpty(tkSDT.Text.Trim()))
             {
                 if (query == "select * from khachhang where ")
                     query += "sodienthoai like @dt ";
@@ -287,11 +370,11 @@ namespace MNM2
             }
             SqlParameter[] args = 
             {
-                new SqlParameter("@id", "%" + tkMa.Text + "%"),
-                new SqlParameter("@ten", "%" + tkTen.Text + "%"),
-                new SqlParameter("@email", "%" + tkEmail.Text + "%"),
-                new SqlParameter("@diachi", "%" + tkDiaChi.Text + "%"),
-                new SqlParameter("@dt", "%" + tkSDT.Text + "%"),
+                new SqlParameter("@id", "%" + tkMa.Text.Trim() + "%"),
+                new SqlParameter("@ten", "%" + tkTen.Text.Trim() + "%"),
+                new SqlParameter("@email", "%" + tkEmail.Text.Trim() + "%"),
+                new SqlParameter("@diachi", "%" + tkDiaChi.Text.Trim() + "%"),
+                new SqlParameter("@dt", "%" + tkSDT.Text.Trim() + "%"),
                 new SqlParameter("@tao", tkDateTao.Value.ToString("yyyy-MM-dd")),
                 new SqlParameter("@capnhat", tkDateCapNhat.Value.ToString("yyyy-MM-dd"))
             };

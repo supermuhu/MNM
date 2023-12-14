@@ -281,6 +281,7 @@
             // 
             this.txtTenLinhKien.Location = new System.Drawing.Point(124, 146);
             this.txtTenLinhKien.Name = "txtTenLinhKien";
+            this.txtTenLinhKien.ReadOnly = true;
             this.txtTenLinhKien.Size = new System.Drawing.Size(173, 20);
             this.txtTenLinhKien.TabIndex = 51;
             // 

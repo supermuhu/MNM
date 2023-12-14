@@ -127,9 +127,9 @@
             this.btnTKDT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTKDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTKDT.ForeColor = System.Drawing.Color.White;
-            this.btnTKDT.Location = new System.Drawing.Point(5, 129);
+            this.btnTKDT.Location = new System.Drawing.Point(-2, 126);
             this.btnTKDT.Name = "btnTKDT";
-            this.btnTKDT.Size = new System.Drawing.Size(170, 41);
+            this.btnTKDT.Size = new System.Drawing.Size(177, 51);
             this.btnTKDT.TabIndex = 0;
             this.btnTKDT.Text = "Thống kê doanh thu";
             this.btnTKDT.UseVisualStyleBackColor = true;
