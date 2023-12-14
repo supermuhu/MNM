@@ -143,7 +143,6 @@ namespace MNM2
                 new SqlParameter("@id", txtMaLoai.Text.Trim()),
                 new SqlParameter("@nhom", cboNhomLK.SelectedValue),
                 new SqlParameter("@ten", txtTenLoai.Text.Trim()),
-                new SqlParameter("@ngaytao", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")),
                 new SqlParameter("@ngaycapnhat", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"))
             };
             if (Data.Excute(query, args))

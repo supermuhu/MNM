@@ -149,7 +149,7 @@ namespace MNM2
             else
             {
                 if(Data.Excute("insert into phieunhap values (0, @ngaynhap)",
-                    new SqlParameter("@ngaynhap", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))))
+                    new SqlParameter("@ngaynhap", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"))))
                 {
                     cboPhieuNhap_Load();
                     cboPhieuNhap.SelectedIndex = cboPhieuNhap.Items.Count - 2;
