@@ -189,19 +189,6 @@ namespace MNM2
                 txtDiaChi.Focus();
                 return;
             }
-            if (!String.IsNullOrEmpty(Data.Scalar("select ten from khachhang where ten = @t",
-                new SqlParameter("@t", txtTenKH.Text.Trim()))))
-            {
-                for(int i = 1; ; i++)
-                {
-                    if(String.IsNullOrEmpty(Data.Scalar("select ten from khachhang where ten = @t",
-                        new SqlParameter("@t", txtTenKH.Text.Trim() + " (" + i.ToString() + ")"))))
-                    {
-                        txtTenKH.Text = txtTenKH.Text.Trim()  + " (" + i.ToString() + ")";
-                        break;
-                    }
-                }
-            }
             String query = "insert into khachhang values (@email, @ten, @sdt, @diachi, @ngaytao, @ngaycapnhat)";
             SqlParameter[] args =
             {
@@ -254,19 +241,6 @@ namespace MNM2
             {
                 txtTenKH.Text = txtTenKH.Text.Substring(0, txtTenKH.Text.IndexOf("(") - 1);
             }
-            if (!String.IsNullOrEmpty(Data.Scalar("select ten from khachhang where ten = @t",
-                new SqlParameter("@t", txtTenKH.Text.Trim()))))
-            {
-                for (int i = 1; ; i++)
-                {
-                    if (String.IsNullOrEmpty(Data.Scalar("select ten from khachhang where ten = @t",
-                        new SqlParameter("@t", txtTenKH.Text.Trim() + " (" + i.ToString() + ")"))))
-                    {
-                        txtTenKH.Text = txtTenKH.Text.Trim() + " (" + i.ToString() + ")";
-                        break;
-                    }
-                }
-            }
             String query = "update khachhang " +
                 "set email = @email," +
                 "ten = @ten," +
@@ -287,19 +261,6 @@ namespace MNM2
             {
                 emptyText();
                 dgvKhachHang_Load();
-            }
-            if (!String.IsNullOrEmpty(Data.Scalar("select ten from khachhang where ten = @t",
-                new SqlParameter("@t", txtTenKH.Text.Trim()))))
-            {
-                for (int i = 1; ; i++)
-                {
-                    if (String.IsNullOrEmpty(Data.Scalar("select ten from khachhang where ten = @t",
-                        new SqlParameter("@t", txtTenKH.Text.Trim() + " (" + i.ToString() + ")"))))
-                    {
-                        txtTenKH.Text = txtTenKH.Text.Trim() + " (" + i.ToString() + ")";
-                        break;
-                    }
-                }
             }
         }
 
@@ -352,16 +313,16 @@ namespace MNM2
             if (dateTao.Checked)
             {
                 if (query == "select * from khachhang where ")
-                    query += "ngaytao = @tao ";
+                    query += "CONVERT(DATE, ngaytao) = = @tao ";
                 else
-                    query += "and ngaytao = @tao ";
+                    query += "and CONVERT(DATE, ngaytao) = = @tao ";
             }
             if (dateCapNhat.Checked)
             {
                 if (query == "select * from khachhang where ")
-                    query += "ngaycapnhat = @capnhat ";
+                    query += "CONVERT(DATE, ngaycapnhat) = @capnhat ";
                 else
-                    query += "and ngaycapnhat = @capnhat ";
+                    query += "and CONVERT(DATE, ngaycapnhat) = @capnhat ";
             }
             if(query == "select * from khachhang where ")
             {
@@ -378,22 +339,7 @@ namespace MNM2
                 new SqlParameter("@tao", tkDateTao.Value.ToString("yyyy-MM-dd")),
                 new SqlParameter("@capnhat", tkDateCapNhat.Value.ToString("yyyy-MM-dd"))
             };
-            //MessageBox.Show(query);
             dgvKhachHang.DataSource = Data.GetData(query, args);
-            //dgvKhachHang.Columns[0].HeaderText = "Mã khách hàng";
-            //dgvKhachHang.Columns[1].HeaderText = "Email";
-            //dgvKhachHang.Columns[2].HeaderText = "Tên";
-            //dgvKhachHang.Columns[3].HeaderText = "Điện thoại";
-            //dgvKhachHang.Columns[4].HeaderText = "Địa chỉ";
-            //dgvKhachHang.Columns[5].HeaderText = "Ngày tạo";
-            //dgvKhachHang.Columns[6].HeaderText = "Ngày cập nhật";
-            //dgvKhachHang.Columns[0].Width = 100;
-            //dgvKhachHang.Columns[1].Width = 150;
-            //dgvKhachHang.Columns[2].Width = 150;
-            //dgvKhachHang.Columns[3].Width = 100;
-            //dgvKhachHang.Columns[4].Width = 150;
-            //dgvKhachHang.Columns[5].Width = 110;
-            //dgvKhachHang.Columns[6].Width = 110;
         }
     }
 }

@@ -174,7 +174,7 @@ namespace MNM2
                         String querry = "insert into phieuxuat(id_khachhang, ngaydathang, id_thanhtoan, tongtien, ghichu) values(@Value1, @Value2, @Value3, @Value4, @Value5)";
                         SqlParameter[] p = {
                             new SqlParameter("@Value1", cboKhachHang.SelectedValue),
-                            new SqlParameter("@Value2", DateTime.Now),
+                            new SqlParameter("@Value2", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")),
                             new SqlParameter("@Value3", cbox_Xuatkho_Thanhtoan.SelectedValue),
                             new SqlParameter("@Value4", "0"),
                             new SqlParameter("@Value5", "")
@@ -366,6 +366,12 @@ namespace MNM2
                 SqlParameter p = new SqlParameter("@Value1", cboMaLK.SelectedValue.ToString());
                 txtTenLinhKien.Text = Data.Scalar(querry, p);
             }
+        }
+
+        private void cboKhachHang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboKhachHang.SelectedValue == null) return;
+            txtKhachHang.Text = cboKhachHang.SelectedValue.ToString();
         }
     }
 }
