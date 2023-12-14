@@ -24,6 +24,18 @@ namespace MNM2
         {
             dateTime_Tu.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             dateTime_Den.Value = DateTime.Now.Date;
+            String query = "select tensanpham, soluongsp, thanhtien, ngaynhap from chitietphieunhap " +
+                "join phieunhap on chitietphieunhap.id_phieunhap = phieunhap.id_phieunhap " +
+                "join sanpham on sanpham.id_sanpham = chitietphieunhap.id_sanpham " +
+                "where ngaynhap >= @tu and ngaynhap <= @den";
+            dgvNhap_Load(query);
+            query = "select tensanpham,soluongsp,thanhtien,ngaydathang from chitietphieuxuat " +
+                "join phieuxuat on chitietphieuxuat.id_phieuxuat = phieuxuat.id_phieuxuat " +
+                "join sanpham on sanpham.id_sanpham = chitietphieuxuat.id_sanpham " +
+                "where ngaydathang >= @tu and ngaydathang <= @den";
+            dgvXuat_Load(query);
+            txtNhapXuatSL_Load();
+            txtTienNhapXuat_Load();
         }
         private void dgvNhap_Load(String query)
         {
@@ -97,6 +109,16 @@ namespace MNM2
             dateTime_Tu.MaxDate = dateTime_Den.Value;
             dateTime_Den.MinDate = dateTime_Tu.Value;
             dateTime_Den.MaxDate = DateTime.Now;
+            String query = "select tensanpham, soluongsp, thanhtien, ngaynhap from chitietphieunhap " +
+                "join phieunhap on chitietphieunhap.id_phieunhap = phieunhap.id_phieunhap " +
+                "join sanpham on sanpham.id_sanpham = chitietphieunhap.id_sanpham " +
+                "where ngaynhap >= @tu and ngaynhap <= @den";
+            dgvNhap_Load(query);
+            query = "select tensanpham,soluongsp,thanhtien,ngaydathang from chitietphieuxuat " +
+                "join phieuxuat on chitietphieuxuat.id_phieuxuat = phieuxuat.id_phieuxuat " +
+                "join sanpham on sanpham.id_sanpham = chitietphieuxuat.id_sanpham " +
+                "where ngaydathang >= @tu and ngaydathang <= @den";
+            dgvXuat_Load(query);
             txtNhapXuatSL_Load();
             txtTienNhapXuat_Load();
         }
