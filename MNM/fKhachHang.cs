@@ -313,9 +313,9 @@ namespace MNM2
             if (dateTao.Checked)
             {
                 if (query == "select * from khachhang where ")
-                    query += "CONVERT(DATE, ngaytao) = = @tao ";
+                    query += "CONVERT(DATE, ngaytao) = @tao ";
                 else
-                    query += "and CONVERT(DATE, ngaytao) = = @tao ";
+                    query += "and CONVERT(DATE, ngaytao) = @tao ";
             }
             if (dateCapNhat.Checked)
             {

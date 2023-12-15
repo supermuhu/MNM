@@ -219,6 +219,14 @@ namespace MNM2
                         querry = "select ngaydathang, chitietphieuxuat.id_sanpham, tensanpham, soluongsp from phieuxuat inner join chitietphieuxuat on phieuxuat.id_phieuxuat = chitietphieuxuat.id_phieuxuat inner join phuongthucthanhtoan on phieuxuat.id_thanhtoan = phuongthucthanhtoan.id_thanhtoan inner join sanpham on chitietphieuxuat.id_sanpham = sanpham.id_sanpham inner join khachhang on khachhang.id_khachhang = phieuxuat.id_khachhang where phieuxuat.id_phieuxuat = @Value1";
                         SqlParameter p2 = new SqlParameter("@Value1", cboPhieuXuat.SelectedValue);
                         dgvPhieuXuat.DataSource = Data.GetData(querry, p2);
+                        var culture = new CultureInfo("en-US");
+                        culture.NumberFormat.NumberDecimalSeparator = ",";
+                        culture.NumberFormat.NumberGroupSeparator = ".";
+                        String s = Data.Scalar("select tongtien from phieuxuat where id_phieuxuat = @id",
+                            new SqlParameter("@id", cboPhieuXuat.SelectedValue));
+                        double money = 0;
+                        if (s != null) money = Convert.ToDouble(s);
+                        txtTongTien.Text = money.ToString("N", culture) + " VNĐ";
                     }
                     else
                     {
@@ -261,6 +269,14 @@ namespace MNM2
                             querry = "select ngaydathang, chitietphieuxuat.id_sanpham, tensanpham, soluongsp from phieuxuat inner join chitietphieuxuat on phieuxuat.id_phieuxuat = chitietphieuxuat.id_phieuxuat inner join phuongthucthanhtoan on phieuxuat.id_thanhtoan = phuongthucthanhtoan.id_thanhtoan inner join sanpham on chitietphieuxuat.id_sanpham = sanpham.id_sanpham inner join khachhang on khachhang.id_khachhang = phieuxuat.id_khachhang where phieuxuat.id_phieuxuat = @Value1";
                             SqlParameter p2 = new SqlParameter("@Value1", cboPhieuXuat.SelectedValue);
                             dgvPhieuXuat.DataSource = Data.GetData(querry, p2);
+                            var culture = new CultureInfo("en-US");
+                            culture.NumberFormat.NumberDecimalSeparator = ",";
+                            culture.NumberFormat.NumberGroupSeparator = ".";
+                            String s = Data.Scalar("select tongtien from phieuxuat where id_phieuxuat = @id",
+                                new SqlParameter("@id", cboPhieuXuat.SelectedValue));
+                            double money = 0;
+                            if (s != null) money = Convert.ToDouble(s);
+                            txtTongTien.Text = money.ToString("N", culture) + " VNĐ";
                         }
                         else
                         {
