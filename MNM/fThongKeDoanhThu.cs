@@ -227,12 +227,12 @@ namespace MNM2
                     worksheet.Cells[index, 1].Value = "Tổng số lượng sản phẩm";
                     worksheet.Cells[index, 4].Value = txtNhapSL.Text;
                     worksheet.Cells[index, 6].Value = "Tổng số lượng sản phẩm";
-                    worksheet.Cells[index, 9].Value = txtNhapSL.Text;
+                    worksheet.Cells[index, 9].Value = txtXuatSL.Text;
                     index++;
                     worksheet.Cells[index, 1].Value = "Tổng giá trị hàng nhập";
                     worksheet.Cells[index, 4].Value = txtTienNhap.Text;
-                    worksheet.Cells[index, 6].Value = "Tổng giá trị hàng nhập";
-                    worksheet.Cells[index, 9].Value = txtTienNhap.Text;
+                    worksheet.Cells[index, 6].Value = "Tổng giá trị hàng xuất";
+                    worksheet.Cells[index, 9].Value = txtTienXuất.Text;
                     var newFileInfo = new FileInfo(saveExcel.FileName);
                     try
                     {
