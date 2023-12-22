@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Data.SqlClient;
 using System.Globalization;
+using OfficeOpenXml;
+using System.IO;
+using DevExpress.Utils.ScrollAnnotations;
 
 namespace MNM2
 {
@@ -65,6 +68,7 @@ namespace MNM2
             dgvXuat.Columns[2].Width = 105;
             dgvXuat.Columns[3].Width = 105;
         }
+        
         private void txtNhapXuatSL_Load()
         {
             int c = 0;
@@ -154,6 +158,93 @@ namespace MNM2
             dgvXuat_Load(query);
             txtNhapXuatSL_Load();
             txtTienNhapXuat_Load();
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            saveExcel.Filter = "Tệp Excel|*.xlsx";
+            saveExcel.Title = "Save a File";
+            saveExcel.FileName = "Thống kê doanh thu_" + dateTime_Tu.Value.ToString("yyyy-MM-dd") + "_" + dateTime_Den.Value.ToString("yyyy-MM-dd");
+            if (saveExcel.ShowDialog() == DialogResult.OK)
+            {
+
+                ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+                using (var package = new ExcelPackage())
+                {
+                    var worksheet = package.Workbook.Worksheets.Add("Sheet1");
+                    worksheet.Cells["A1"].Value = "Từ";
+                    worksheet.Cells["A2"].Value = "Đến";
+                    worksheet.Cells["B1"].Value = dateTime_Tu.Value;
+                    worksheet.Cells["B1"].Style.Numberformat.Format = "MM/dd/yyyy";
+                    worksheet.Cells["B2"].Value = dateTime_Den.Value;
+                    worksheet.Cells["B2"].Style.Numberformat.Format = "MM/dd/yyyy";
+                    worksheet.Cells["H1"].Value = "Tổng tiền: " + txtTongTien.Text;
+                    worksheet.Columns[4].Style.Numberformat.Format = "MM/dd/yyyy HH:mm:ss";
+                    worksheet.Columns[9].Style.Numberformat.Format = "MM/dd/yyyy HH:mm:ss";
+                    //String[] arr = txtTongTien.Text.Substring(0, txtTongTien.Text.Length - 7).Split('.');
+                    //String tongtien = "";
+                    //foreach(String s in arr)
+                    //{
+                    //    tongtien += s;
+                    //}
+                    //worksheet.Cells["I1"].Value = Convert.ToDouble(tongtien);
+                    worksheet.Cells["A4"].Value = "Thống kê hàng nhập";
+                    worksheet.Cells["F4"].Value = "Thống kê hàng xuất";
+
+                    worksheet.Cells["A5"].Value = "Tên linh kiện";
+                    worksheet.Cells["B5"].Value = "Số lượng";
+                    worksheet.Cells["C5"].Value = "Thành tiền";
+                    worksheet.Cells["D5"].Value = "Ngày nhập";
+
+                    worksheet.Cells["F5"].Value = "Tên linh kiện";
+                    worksheet.Cells["G5"].Value = "Số lượng";
+                    worksheet.Cells["H5"].Value = "Thành tiền";
+                    worksheet.Cells["I5"].Value = "Ngày xuất";
+
+                    int index = 6;
+                    int nhap = 0, xuat = 0;
+                    while(nhap < dgvNhap.Rows.Count || xuat < dgvXuat.Rows.Count)
+                    {
+                        if(nhap < dgvNhap.Rows.Count)
+                        {
+                            for (int j = 0; j < dgvNhap.Columns.Count; j++)
+                            {
+                                worksheet.Cells[index, j + 1].Value = dgvNhap.Rows[nhap].Cells[j].Value;
+                            }
+                            nhap++;
+                        }
+                        if(xuat < dgvXuat.Rows.Count)
+                        {
+                            for (int j = 0; j < dgvNhap.Columns.Count; j++)
+                            {
+                                worksheet.Cells[index, j + 6].Value = dgvXuat.Rows[xuat].Cells[j].Value;
+                            }
+                            xuat++;
+                        }
+                        index++;
+                    }
+                    index++;
+                    worksheet.Cells[index, 1].Value = "Tổng số lượng sản phẩm";
+                    worksheet.Cells[index, 4].Value = txtNhapSL.Text;
+                    worksheet.Cells[index, 6].Value = "Tổng số lượng sản phẩm";
+                    worksheet.Cells[index, 9].Value = txtNhapSL.Text;
+                    index++;
+                    worksheet.Cells[index, 1].Value = "Tổng giá trị hàng nhập";
+                    worksheet.Cells[index, 4].Value = txtTienNhap.Text;
+                    worksheet.Cells[index, 6].Value = "Tổng giá trị hàng nhập";
+                    worksheet.Cells[index, 9].Value = txtTienNhap.Text;
+                    var newFileInfo = new FileInfo(saveExcel.FileName);
+                    try
+                    {
+                        package.SaveAs(newFileInfo);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Không lưu được");
+                    }
+                }
+            }
+
         }
     }
 }

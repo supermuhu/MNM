@@ -53,6 +53,8 @@
             this.txtXuatSL = new System.Windows.Forms.TextBox();
             this.txtTongTien = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.btnExcel = new System.Windows.Forms.Button();
+            this.saveExcel = new System.Windows.Forms.SaveFileDialog();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhap)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -290,10 +292,21 @@
             this.label10.TabIndex = 44;
             this.label10.Text = "Tổng doanh thu";
             // 
+            // btnExcel
+            // 
+            this.btnExcel.Location = new System.Drawing.Point(801, 142);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(97, 43);
+            this.btnExcel.TabIndex = 45;
+            this.btnExcel.Text = "Xuất Excel";
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
             // fThongKeDoanhThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtTongTien);
             this.Controls.Add(this.label9);
@@ -349,5 +362,7 @@
         private System.Windows.Forms.TextBox txtXuatSL;
         private System.Windows.Forms.TextBox txtTongTien;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnExcel;
+        private System.Windows.Forms.SaveFileDialog saveExcel;
     }
 }
