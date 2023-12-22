@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fXuatKho));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtKhachHang = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.txtTenLinhKien = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.cboKhachHang = new System.Windows.Forms.ComboBox();
@@ -50,18 +53,21 @@
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvPhieuXuat = new System.Windows.Forms.DataGridView();
-            this.ngaydathang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_sanpham = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tensanpham = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soluongsp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnXuatKho = new System.Windows.Forms.Button();
             this.btnLamMoi = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtTongTien = new System.Windows.Forms.TextBox();
             this.lblTongTien = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtKhachHang = new System.Windows.Forms.TextBox();
+            this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDocument = new System.Drawing.Printing.PrintDocument();
+            this.btnPhieuXuat = new System.Windows.Forms.Button();
+            this.ngaydathang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_sanpham = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tensanpham = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soluongsp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrSoLuong)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -98,6 +104,22 @@
             this.groupBox2.TabIndex = 55;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin phiếu xuất";
+            // 
+            // txtKhachHang
+            // 
+            this.txtKhachHang.Location = new System.Drawing.Point(124, 134);
+            this.txtKhachHang.Name = "txtKhachHang";
+            this.txtKhachHang.Size = new System.Drawing.Size(88, 20);
+            this.txtKhachHang.TabIndex = 61;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(31, 137);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(82, 13);
+            this.label11.TabIndex = 60;
+            this.label11.Text = "Mã khách hàng";
             // 
             // txtTenLinhKien
             // 
@@ -307,7 +329,9 @@
             this.ngaydathang,
             this.id_sanpham,
             this.tensanpham,
-            this.soluongsp});
+            this.soluongsp,
+            this.Column1,
+            this.Column2});
             this.dgvPhieuXuat.Location = new System.Drawing.Point(14, 19);
             this.dgvPhieuXuat.MultiSelect = false;
             this.dgvPhieuXuat.Name = "dgvPhieuXuat";
@@ -318,49 +342,14 @@
             this.dgvPhieuXuat.TabIndex = 22;
             this.dgvPhieuXuat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhieuXuat_CellClick);
             // 
-            // ngaydathang
-            // 
-            this.ngaydathang.DataPropertyName = "ngaydathang";
-            this.ngaydathang.HeaderText = "Ngày xuất";
-            this.ngaydathang.MinimumWidth = 6;
-            this.ngaydathang.Name = "ngaydathang";
-            this.ngaydathang.ReadOnly = true;
-            this.ngaydathang.Width = 130;
-            // 
-            // id_sanpham
-            // 
-            this.id_sanpham.DataPropertyName = "id_sanpham";
-            this.id_sanpham.HeaderText = "Mã linh kiện";
-            this.id_sanpham.MinimumWidth = 6;
-            this.id_sanpham.Name = "id_sanpham";
-            this.id_sanpham.ReadOnly = true;
-            this.id_sanpham.Width = 140;
-            // 
-            // tensanpham
-            // 
-            this.tensanpham.DataPropertyName = "tensanpham";
-            this.tensanpham.HeaderText = "Tên linh kiện";
-            this.tensanpham.MinimumWidth = 6;
-            this.tensanpham.Name = "tensanpham";
-            this.tensanpham.ReadOnly = true;
-            this.tensanpham.Width = 190;
-            // 
-            // soluongsp
-            // 
-            this.soluongsp.DataPropertyName = "soluongsp";
-            this.soluongsp.HeaderText = "Số lượng";
-            this.soluongsp.MinimumWidth = 6;
-            this.soluongsp.Name = "soluongsp";
-            this.soluongsp.ReadOnly = true;
-            this.soluongsp.Width = 80;
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnPhieuXuat);
             this.groupBox1.Controls.Add(this.btnXuatKho);
-            this.groupBox1.Location = new System.Drawing.Point(149, 518);
+            this.groupBox1.Location = new System.Drawing.Point(70, 518);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.groupBox1.Size = new System.Drawing.Size(99, 56);
+            this.groupBox1.Size = new System.Drawing.Size(178, 56);
             this.groupBox1.TabIndex = 52;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tác vụ";
@@ -412,21 +401,79 @@
             this.lblTongTien.TabIndex = 56;
             this.lblTongTien.Text = "Tổng tiền";
             // 
-            // label11
+            // printPreviewDialog
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(31, 137);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(82, 13);
-            this.label11.TabIndex = 60;
-            this.label11.Text = "Mã khách hàng";
+            this.printPreviewDialog.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog.Enabled = true;
+            this.printPreviewDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog.Icon")));
+            this.printPreviewDialog.Name = "printPreviewDialog";
+            this.printPreviewDialog.Visible = false;
             // 
-            // txtKhachHang
+            // printDocument
             // 
-            this.txtKhachHang.Location = new System.Drawing.Point(124, 134);
-            this.txtKhachHang.Name = "txtKhachHang";
-            this.txtKhachHang.Size = new System.Drawing.Size(88, 20);
-            this.txtKhachHang.TabIndex = 61;
+            this.printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument_PrintPage);
+            // 
+            // btnPhieuXuat
+            // 
+            this.btnPhieuXuat.Location = new System.Drawing.Point(95, 19);
+            this.btnPhieuXuat.Name = "btnPhieuXuat";
+            this.btnPhieuXuat.Size = new System.Drawing.Size(75, 23);
+            this.btnPhieuXuat.TabIndex = 8;
+            this.btnPhieuXuat.Text = "Xuất phiếu";
+            this.btnPhieuXuat.UseVisualStyleBackColor = true;
+            this.btnPhieuXuat.Click += new System.EventHandler(this.btnPhieuXuat_Click);
+            // 
+            // ngaydathang
+            // 
+            this.ngaydathang.DataPropertyName = "ngaydathang";
+            this.ngaydathang.HeaderText = "Ngày xuất";
+            this.ngaydathang.MinimumWidth = 6;
+            this.ngaydathang.Name = "ngaydathang";
+            this.ngaydathang.ReadOnly = true;
+            this.ngaydathang.Width = 130;
+            // 
+            // id_sanpham
+            // 
+            this.id_sanpham.DataPropertyName = "id_sanpham";
+            this.id_sanpham.HeaderText = "Mã linh kiện";
+            this.id_sanpham.MinimumWidth = 6;
+            this.id_sanpham.Name = "id_sanpham";
+            this.id_sanpham.ReadOnly = true;
+            this.id_sanpham.Width = 140;
+            // 
+            // tensanpham
+            // 
+            this.tensanpham.DataPropertyName = "tensanpham";
+            this.tensanpham.HeaderText = "Tên linh kiện";
+            this.tensanpham.MinimumWidth = 6;
+            this.tensanpham.Name = "tensanpham";
+            this.tensanpham.ReadOnly = true;
+            this.tensanpham.Width = 190;
+            // 
+            // soluongsp
+            // 
+            this.soluongsp.DataPropertyName = "soluongsp";
+            this.soluongsp.HeaderText = "Số lượng";
+            this.soluongsp.MinimumWidth = 6;
+            this.soluongsp.Name = "soluongsp";
+            this.soluongsp.ReadOnly = true;
+            this.soluongsp.Width = 80;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "gia";
+            this.Column1.HeaderText = "Giá";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "thanhtien";
+            this.Column2.HeaderText = "Thành tiền";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // fXuatKho
             // 
@@ -484,11 +531,16 @@
         private System.Windows.Forms.TextBox txtTongTien;
         private System.Windows.Forms.Label lblTongTien;
         private System.Windows.Forms.TextBox txtTenLinhKien;
+        private System.Windows.Forms.TextBox txtKhachHang;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog;
+        private System.Drawing.Printing.PrintDocument printDocument;
+        private System.Windows.Forms.Button btnPhieuXuat;
         private System.Windows.Forms.DataGridViewTextBoxColumn ngaydathang;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_sanpham;
         private System.Windows.Forms.DataGridViewTextBoxColumn tensanpham;
         private System.Windows.Forms.DataGridViewTextBoxColumn soluongsp;
-        private System.Windows.Forms.TextBox txtKhachHang;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }
