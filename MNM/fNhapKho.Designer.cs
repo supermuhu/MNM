@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fNhapKho));
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cboMaLK = new System.Windows.Forms.ComboBox();
@@ -53,6 +54,9 @@
             this.cboPhieuNhap = new System.Windows.Forms.ComboBox();
             this.txtTongTien = new System.Windows.Forms.TextBox();
             this.lblTongTien = new System.Windows.Forms.Label();
+            this.btnPhieuNhap = new System.Windows.Forms.Button();
+            this.printDocument = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
             ((System.ComponentModel.ISupportInitialize)(this.nmrSoLuong)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhieuNhap)).BeginInit();
@@ -185,11 +189,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnPhieuNhap);
             this.groupBox1.Controls.Add(this.btnNhapKho);
-            this.groupBox1.Location = new System.Drawing.Point(132, 498);
+            this.groupBox1.Location = new System.Drawing.Point(48, 498);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.groupBox1.Size = new System.Drawing.Size(99, 56);
+            this.groupBox1.Size = new System.Drawing.Size(183, 56);
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tác vụ";
@@ -331,6 +336,30 @@
             this.lblTongTien.TabIndex = 52;
             this.lblTongTien.Text = "Tổng tiền";
             // 
+            // btnPhieuNhap
+            // 
+            this.btnPhieuNhap.Location = new System.Drawing.Point(95, 19);
+            this.btnPhieuNhap.Name = "btnPhieuNhap";
+            this.btnPhieuNhap.Size = new System.Drawing.Size(75, 23);
+            this.btnPhieuNhap.TabIndex = 54;
+            this.btnPhieuNhap.Text = "Xuất phiếu";
+            this.btnPhieuNhap.UseVisualStyleBackColor = true;
+            this.btnPhieuNhap.Click += new System.EventHandler(this.btnPhieuNhap_Click);
+            // 
+            // printDocument
+            // 
+            this.printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument_PrintPage);
+            // 
+            // printPreviewDialog
+            // 
+            this.printPreviewDialog.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog.Enabled = true;
+            this.printPreviewDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog.Icon")));
+            this.printPreviewDialog.Name = "printPreviewDialog";
+            this.printPreviewDialog.Visible = false;
+            // 
             // fNhapKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -384,5 +413,8 @@
         private System.Windows.Forms.TextBox txtTenLinhKien;
         private System.Windows.Forms.TextBox txtTongTien;
         private System.Windows.Forms.Label lblTongTien;
+        private System.Windows.Forms.Button btnPhieuNhap;
+        private System.Drawing.Printing.PrintDocument printDocument;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog;
     }
 }

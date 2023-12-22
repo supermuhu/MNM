@@ -9,6 +9,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -26,14 +27,14 @@ namespace MNM2
         }
         private void Loaad()
         {
-            string querry = "select ngaydathang, chitietphieuxuat.id_sanpham, tensanpham, soluongsp from phieuxuat inner join chitietphieuxuat on phieuxuat.id_phieuxuat = chitietphieuxuat.id_phieuxuat inner join phuongthucthanhtoan on phieuxuat.id_thanhtoan = phuongthucthanhtoan.id_thanhtoan inner join sanpham on chitietphieuxuat.id_sanpham = sanpham.id_sanpham inner join khachhang on khachhang.id_khachhang = phieuxuat.id_khachhang";
-            dgvPhieuXuat.DataSource = Data.GetData(querry);
+            string querry = "select ngaydathang,c.id_sanpham,tensanpham,soluongsp,gia,thanhtien from phieuxuat x join chitietphieuxuat c on x.id_phieuxuat = c.id_phieuxuat join sanpham s on c.id_sanpham = s.id_sanpham where x.id_phieuxuat = @id";
+            dgvPhieuXuat.DataSource = Data.GetData(querry, new SqlParameter("@id",cboPhieuXuat.SelectedValue));
         }
         private void fXuatKho_Load(object sender, EventArgs e)
         {
-            string querry = "select ngaydathang, chitietphieuxuat.id_sanpham, tensanpham, soluongsp from phieuxuat inner join chitietphieuxuat on phieuxuat.id_phieuxuat = chitietphieuxuat.id_phieuxuat inner join phuongthucthanhtoan on phieuxuat.id_thanhtoan = phuongthucthanhtoan.id_thanhtoan inner join sanpham on chitietphieuxuat.id_sanpham = sanpham.id_sanpham inner join khachhang on khachhang.id_khachhang = phieuxuat.id_khachhang";
-            dgvPhieuXuat.DataSource = Data.GetData(querry);
-            querry = "select sum(tongtien) from phieuxuat";
+            //string querry = "select ngaydathang,c.id_sanpham,tensanpham,soluongsp,gia,thanhtien from phieuxuat x join chitietphieuxuat c on x.id_phieuxuat = c.id_phieuxuat join sanpham s on c.id_sanpham = s.id_sanpham where x.id_phieuxuat = @id";
+            //dgvPhieuXuat.DataSource = Data.GetData(querry, new SqlParameter("@id",cboPhieuXuat.SelectedValue));
+            String querry = "select sum(tongtien) from phieuxuat";
             txtTongTien.Text = Data.Scalar(querry);
             querry = "select * from phieuxuat";
             cboPhieuXuat.DataSource = null;
@@ -216,7 +217,7 @@ namespace MNM2
                             new SqlParameter("@Value4", tien)
                         };
                         ex = Data.Excute(querry, p1);
-                        querry = "select ngaydathang, chitietphieuxuat.id_sanpham, tensanpham, soluongsp from phieuxuat inner join chitietphieuxuat on phieuxuat.id_phieuxuat = chitietphieuxuat.id_phieuxuat inner join phuongthucthanhtoan on phieuxuat.id_thanhtoan = phuongthucthanhtoan.id_thanhtoan inner join sanpham on chitietphieuxuat.id_sanpham = sanpham.id_sanpham inner join khachhang on khachhang.id_khachhang = phieuxuat.id_khachhang where phieuxuat.id_phieuxuat = @Value1";
+                        querry = "select ngaydathang,c.id_sanpham,tensanpham,soluongsp,gia,thanhtien from phieuxuat x join chitietphieuxuat c on x.id_phieuxuat = c.id_phieuxuat join sanpham s on c.id_sanpham = s.id_sanpham where x.id_phieuxuat = @Value1";
                         SqlParameter p2 = new SqlParameter("@Value1", cboPhieuXuat.SelectedValue);
                         dgvPhieuXuat.DataSource = Data.GetData(querry, p2);
                         var culture = new CultureInfo("en-US");
@@ -266,7 +267,7 @@ namespace MNM2
                                 new SqlParameter("@Value4", tien)
                             };
                             bool ex = Data.Excute(querry, p);
-                            querry = "select ngaydathang, chitietphieuxuat.id_sanpham, tensanpham, soluongsp from phieuxuat inner join chitietphieuxuat on phieuxuat.id_phieuxuat = chitietphieuxuat.id_phieuxuat inner join phuongthucthanhtoan on phieuxuat.id_thanhtoan = phuongthucthanhtoan.id_thanhtoan inner join sanpham on chitietphieuxuat.id_sanpham = sanpham.id_sanpham inner join khachhang on khachhang.id_khachhang = phieuxuat.id_khachhang where phieuxuat.id_phieuxuat = @Value1";
+                            querry = "select ngaydathang,c.id_sanpham,tensanpham,soluongsp,gia,thanhtien from phieuxuat x join chitietphieuxuat c on x.id_phieuxuat = c.id_phieuxuat join sanpham s on c.id_sanpham = s.id_sanpham where x.id_phieuxuat = @Value1";
                             SqlParameter p2 = new SqlParameter("@Value1", cboPhieuXuat.SelectedValue);
                             dgvPhieuXuat.DataSource = Data.GetData(querry, p2);
                             var culture = new CultureInfo("en-US");
@@ -328,7 +329,7 @@ namespace MNM2
                 double money = 0;
                 if (s != null) money = Convert.ToDouble(s);
                 txtTongTien.Text = money.ToString("N", culture) + " VNĐ";
-                string querry = "select ngaydathang, chitietphieuxuat.id_sanpham, tensanpham, soluongsp from phieuxuat inner join chitietphieuxuat on phieuxuat.id_phieuxuat = chitietphieuxuat.id_phieuxuat inner join phuongthucthanhtoan on phieuxuat.id_thanhtoan = phuongthucthanhtoan.id_thanhtoan inner join sanpham on chitietphieuxuat.id_sanpham = sanpham.id_sanpham inner join khachhang on khachhang.id_khachhang = phieuxuat.id_khachhang where phieuxuat.id_phieuxuat = @Value1";
+                string querry = "select ngaydathang,c.id_sanpham,tensanpham,soluongsp,gia,thanhtien from phieuxuat x join chitietphieuxuat c on x.id_phieuxuat = c.id_phieuxuat join sanpham s on c.id_sanpham = s.id_sanpham where x.id_phieuxuat = @Value1";
                 using (SqlConnection conn = new SqlConnection(Data.GetStringConnection()))
                 {
                     conn.Open();
@@ -388,6 +389,85 @@ namespace MNM2
         {
             if (cboKhachHang.SelectedValue == null) return;
             txtKhachHang.Text = cboKhachHang.SelectedValue.ToString();
+        }
+
+        private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            StringFormat format = new StringFormat();
+            format.LineAlignment = StringAlignment.Center;
+            format.Alignment = StringAlignment.Center;
+
+            Font font = new Font("Calibri", 20, FontStyle.Bold);
+            e.Graphics.DrawString("Phiếu Xuất", font, Brushes.Black, new RectangleF(0, 30, e.PageBounds.Width, 30), format);
+            font = new Font("Calibri", 13);
+
+            // Vẽ thông tin khách hàng
+            format.Alignment = StringAlignment.Near;
+            String maphieu = cboPhieuXuat.SelectedValue.ToString();
+            e.Graphics.DrawString("Khách hàng: " + Data.Scalar("Select ten from khachhang where id_khachhang = @id", new SqlParameter("@id", cboKhachHang.SelectedValue)), font, Brushes.Black, new PointF(50, 110));
+            e.Graphics.DrawString("Phiếu nhập: " + maphieu, font, Brushes.Black, new PointF(50, 140));
+
+            // Vẽ bảng giá
+            int x = 20;
+            int y = 200;
+            int rowHeight = 30;
+
+            e.Graphics.DrawLine(Pens.Black, x, y, x + 800, y);
+            font = new Font("Calibri", 11);
+            //e.Graphics.DrawString("Mã linh kiện", font, Brushes.Black, new RectangleF(x, y, 130, rowHeight), format);
+            e.Graphics.DrawString("Tên linh kiện", font, Brushes.Black, new RectangleF(x, y, 200, rowHeight), format);
+            e.Graphics.DrawString("Số lượng", font, Brushes.Black, new RectangleF(x + 200, y, 80, rowHeight), format);
+            e.Graphics.DrawString("Giá", font, Brushes.Black, new RectangleF(x + 280, y, 170, rowHeight), format);
+            e.Graphics.DrawString("Thành tiền", font, Brushes.Black, new RectangleF(x + 450, y, 170, rowHeight), format);
+            e.Graphics.DrawString("Ngày xuất", font, Brushes.Black, new RectangleF(x + 620, y, 200, rowHeight), format);
+
+
+            y += rowHeight;
+            e.Graphics.DrawLine(Pens.Black, x, y, x + 800, y);
+            //Lấy dữ liệu
+            foreach (DataGridViewRow row in dgvPhieuXuat.Rows)
+            {
+                e.Graphics.DrawString(row.Cells[2].Value.ToString(), font, Brushes.Black, new RectangleF(x, y, 200, rowHeight), format);
+                e.Graphics.DrawString(row.Cells[3].Value.ToString(), font, Brushes.Black, new RectangleF(x + 200, y, 70, rowHeight), format);
+                e.Graphics.DrawString(row.Cells[4].Value.ToString(), font, Brushes.Black, new RectangleF(x + 270, y, 170, rowHeight), format);
+                e.Graphics.DrawString(row.Cells[5].Value.ToString(), font, Brushes.Black, new RectangleF(x + 440, y, 170, rowHeight), format);
+                e.Graphics.DrawString(row.Cells[0].Value.ToString(), font, Brushes.Black, new RectangleF(x + 610, y, 200, rowHeight), format);
+                y += rowHeight;
+            }
+
+            e.Graphics.DrawLine(Pens.Black, x, y, x + 800, y);
+            // Vẽ tổng cộng
+            y += rowHeight;
+            e.Graphics.DrawString("Tổng tiền: " + txtTongTien.Text, new Font("Calibri", 16, FontStyle.Bold), Brushes.Black, new RectangleF(400, y, e.PageBounds.Width, 50), format);
+            y += rowHeight;
+            y += rowHeight;
+            font = new Font("Calibri", 13);
+            e.Graphics.DrawString("Địa chỉ: Km 104+200 Nguyễn Bỉnh Khiêm, Phường Đông Hải 2, Quận Hải An, TP Hải Phòng", font, Brushes.Black, new PointF(50, y));
+            y += rowHeight;
+            e.Graphics.DrawString("Liên hệ: 031.3614221 - supermu626@gmail.com", font, Brushes.Black, new PointF(50, y));
+            // Vẽ cảm ơn
+            y += rowHeight;
+            e.Graphics.DrawString("Cảm ơn vì đã tin tưởng dịch vụ của chúng tôi!!!", new Font("Calibri", 10), Brushes.Black, new RectangleF(270, y, e.PageBounds.Width, 50), format);
+            // Giải phóng bộ nhớ
+            font.Dispose();
+            format.Dispose();
+        }
+
+        private void btnPhieuXuat_Click(object sender, EventArgs e)
+        {
+            if (cboPhieuXuat.SelectedValue == null || cboPhieuXuat.Text == "-1")
+            {
+                MessageBox.Show("Chưa chọn phiếu xuất nào");
+                return;
+            }
+            PrintDocument printDocument = new PrintDocument();
+            printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
+
+            PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
+            printPreviewDialog.Document = printDocument;
+
+            // Mở cửa sổ xem trước
+            printPreviewDialog.ShowDialog();
         }
     }
 }
