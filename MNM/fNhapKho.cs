@@ -76,12 +76,12 @@ namespace MNM2
         private void cboPhieuNhap_SelectedIndexChanged(object sender, EventArgs e)
         {
             dgvPhieuNhap_Load();
-            cboMaLK_Load();
         }
 
         private void fNhapKho_Load(object sender, EventArgs e)
         {
             cboPhieuNhap_Load();
+            cboMaLK_Load()
             cboPhieuNhap.SelectedIndex = cboPhieuNhap.Items.Count - 1;
         }
 
