@@ -517,3 +517,10 @@ D:\Documents\MNM\MNM_ChinhMo\MNM\MNM\obj\Debug\MNM2.csproj.CoreCompileInputs.cac
 D:\Documents\MNM\MNM_ChinhMo\MNM\MNM\obj\Debug\MNM2.csproj.CopyComplete
 D:\Documents\MNM\MNM_ChinhMo\MNM\MNM\obj\Debug\MNM2.exe
 D:\Documents\MNM\MNM_ChinhMo\MNM\MNM\obj\Debug\MNM2.pdb
+D:\Documents\MNM\MNM\MNM\bin\Debug\EPPlus.dll
+D:\Documents\MNM\MNM\MNM\bin\Debug\EPPlus.Interfaces.dll
+D:\Documents\MNM\MNM\MNM\bin\Debug\EPPlus.System.Drawing.dll
+D:\Documents\MNM\MNM\MNM\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+D:\Documents\MNM\MNM\MNM\bin\Debug\System.ComponentModel.Annotations.dll
+D:\Documents\MNM\MNM\MNM\bin\Debug\EPPlus.xml
+D:\Documents\MNM\MNM\MNM\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
