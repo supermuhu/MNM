@@ -232,7 +232,8 @@ namespace MNM2
                     worksheet.Cells[index, 1].Value = "Tổng giá trị hàng nhập";
                     worksheet.Cells[index, 4].Value = txtTienNhap.Text;
                     worksheet.Cells[index, 6].Value = "Tổng giá trị hàng xuất";
-                    worksheet.Cells[index, 9].Value = txtTienXuất.Text;
+                    worksheet.Cells[index, 9].Value = txtTienXuat.Text;
+                    worksheet.Cells.AutoFitColumns();
                     var newFileInfo = new FileInfo(saveExcel.FileName);
                     try
                     {
